@@ -10,6 +10,7 @@ namespace ConsoleApp13
     {
         static void Main(string[] args)
         {
+            Console.Writeline("Hellow Word.")
         }
     }
 }
