@@ -154,7 +154,130 @@ namespace ConsoleApp13
     {
         static void Main(string[] args)
         {
-            Console.Writeline("Hellow Word.")
+            Terreno Vegetación = new Terreno();
+            Vegetación.tipo = "Vegetación";
+            Terreno Acuático = new Terreno();
+            Acuático.tipo = "Acuático";
+            Terreno Desierto  = new Terreno();
+            Desierto.tipo = "Desierto";
+            Terreno Nieve = new Terreno();
+            Nieve.tipo = "Nieve";
+            Terreno Volcán = new Terreno();
+            Volcán.tipo = "Volcán";
+            
+            
+            Console.WriteLine("-=Bienvenido a Bitmonlandia=-");
+            Console.WriteLine("Seleccione configuración inicial.");
+            Console.WriteLine("Opción 1:");
+            Terreno[,] opcion1 = new Terreno[10, 10];
+            opcion1[0, 0] = Desierto;
+            opcion1[1, 0] = Desierto;
+            opcion1[1, 1] = Desierto;
+            opcion1[1, 2] = Desierto;
+            opcion1[1, 3] = Desierto;
+            opcion1[1, 4] = Desierto;
+            opcion1[1, 5] = Desierto;
+            opcion1[1, 6] = Desierto;
+            opcion1[2, 3] = Desierto;
+            opcion1[2, 4] = Desierto;
+            opcion1[2, 5] = Desierto;
+            opcion1[2, 6] = Desierto;
+            opcion1[2, 7] = Desierto;
+            opcion1[3, 6] = Desierto;
+            opcion1[3, 7] = Desierto;
+            opcion1[3, 8] = Desierto;
+            opcion1[3, 9] = Desierto;
+            opcion1[4, 5] = Desierto;
+            opcion1[4, 6] = Desierto;
+            opcion1[4, 7] = Desierto;
+            opcion1[4, 8] = Desierto;
+            opcion1[4, 9] = Desierto;
+            opcion1[5, 6] = Desierto;
+            opcion1[5, 8] = Desierto;
+            opcion1[0, 1] = Acuático;
+            opcion1[0, 1] = Acuático;
+            opcion1[0, 2] = Acuático;
+            opcion1[0, 3] = Acuático;
+            opcion1[0, 4] = Acuático;
+            opcion1[0, 5] = Acuático;
+            opcion1[5, 7] = Acuático;
+            opcion1[5, 9] = Acuático;
+            opcion1[6, 5] = Acuático;
+            opcion1[6, 6] = Acuático;
+            opcion1[6, 7] = Acuático;
+            opcion1[6, 8] = Acuático;
+            opcion1[6, 9] = Acuático;
+            opcion1[7, 1] = Acuático;
+            opcion1[7, 4] = Acuático;
+            opcion1[7, 5] = Acuático;
+            opcion1[7, 9] = Acuático;
+            opcion1[8, 0] = Acuático;
+            opcion1[8, 1] = Acuático;
+            opcion1[8, 2] = Acuático;
+            opcion1[8, 3] = Acuático;
+            opcion1[8, 4] = Acuático;
+            opcion1[9, 0] = Acuático;
+            opcion1[9, 1] = Acuático;
+            opcion1[9, 2] = Acuático;
+            opcion1[9, 3] = Acuático;
+            opcion1[0, 6] = Nieve;
+            opcion1[0, 7] = Nieve;
+            opcion1[0, 8] = Nieve;
+            opcion1[1, 7] = Nieve;
+            opcion1[1, 8] = Nieve;
+            opcion1[1, 9] = Nieve;
+            opcion1[2, 8] = Nieve;
+            opcion1[2, 9] = Nieve;
+            opcion1[2, 0] = Vegetación;
+            opcion1[2, 1] = Vegetación;
+            opcion1[2, 2] = Vegetación;
+            opcion1[3, 0] = Vegetación;
+            opcion1[3, 1] = Vegetación;
+            opcion1[3, 2] = Vegetación;
+            opcion1[3, 3] = Vegetación;
+            opcion1[3, 4] = Vegetación;
+            opcion1[3, 5] = Vegetación;
+            opcion1[4, 0] = Vegetación;
+            opcion1[4, 1] = Vegetación;
+            opcion1[4, 2] = Vegetación;
+            opcion1[4, 3] = Vegetación;
+            opcion1[4, 4] = Vegetación;
+            opcion1[5, 0] = Vegetación;
+            opcion1[5, 1] = Vegetación;
+            opcion1[5, 2] = Vegetación;
+            opcion1[5, 3] = Vegetación;
+            opcion1[5, 4] = Vegetación;
+            opcion1[5, 5] = Vegetación;
+            opcion1[6, 0] = Vegetación;
+            opcion1[6, 1] = Vegetación;
+            opcion1[6, 2] = Vegetación;
+            opcion1[6, 3] = Vegetación;
+            opcion1[6, 4] = Vegetación;
+            opcion1[7, 0] = Vegetación;
+            opcion1[7, 2] = Vegetación;
+            opcion1[7, 3] = Vegetación;
+            opcion1[7, 6] = Volcán;
+            opcion1[7, 7] = Volcán;
+            opcion1[7, 8] = Volcán;
+            opcion1[8, 5] = Volcán;
+            opcion1[8, 6] = Volcán;
+            opcion1[8, 7] = Volcán;
+            opcion1[8, 8] = Volcán;
+            opcion1[8, 9] = Volcán;
+            opcion1[9, 4] = Volcán;
+            opcion1[9, 5] = Volcán;
+            opcion1[9, 6] = Volcán;
+            opcion1[9, 7] = Volcán;
+            opcion1[9, 8] = Volcán;
+            opcion1[9, 9] = Volcán;
+            for(int fila = 0; fila < 10; fila++)
+            {
+                for(int col = 0; col < 10; col++)
+                {
+                    Console.Write(" " + opcion1[fila, col]);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
