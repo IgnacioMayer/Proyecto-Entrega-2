@@ -12,32 +12,32 @@ namespace ConsoleApp14
             {
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
                 Console.ForegroundColor = ConsoleColor.White;
-                return "Vegetacn";
+                return " ";
 
             }
             else if (tipo == "Acuatico")
             {
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.ForegroundColor = ConsoleColor.White;
-                return "Acuatico";
+                return " ";
             }
             else if (tipo == "Desierto")
             {
                 Console.BackgroundColor = ConsoleColor.DarkYellow;
                 Console.ForegroundColor = ConsoleColor.White;
-                return "Desierto";
+                return " ";
             }
             else if (tipo == "NieveIce")
             {
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Black;
-                return "NieveIce";
+                return " ";
             }
             else
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
-                return "Volcanic";
+                return " ";
             }
 
         }
