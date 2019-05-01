@@ -6,6 +6,6 @@ namespace ConsoleApp14
     {
         Bitmon[,,] Bitmons;
         Terreno[,] Terrenos;
-
+       
     }
 }

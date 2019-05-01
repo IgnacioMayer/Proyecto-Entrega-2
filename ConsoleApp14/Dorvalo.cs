@@ -1,18 +1,22 @@
-﻿namespace ConsoleApp14
+﻿using System;
+namespace ConsoleApp14
 {
     class Dorvalo : Bitmon
     {
+        public Dorvalo(int[] posicion) : base(posicion)
+        {
+            Random random = new Random();
+            int vida = random.Next(10, 14);
+            this.Tipo = "Dorvalo";
+            this.Posicion = posicion;
+            this.TiempoVida = vida;
+            this.Multiplicador = 1.2f;
+            this.PuntosdeAtaque = 16;
+            this.PuntosdeVida = 30;
+        }
         public override void Mover(Mapa mapa)
         {
-            base.Mover(mapa);
-        }
-        public override void Relacion()
-        {
-            base.Relacion();
-        }
-        public override bool Nacer()
-        {
-            return base.Nacer();
+
         }
     }
 }
