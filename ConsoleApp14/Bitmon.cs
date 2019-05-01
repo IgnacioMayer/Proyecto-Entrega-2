@@ -1,36 +1,33 @@
 ﻿using System.Collections.Generic;
-
 namespace ConsoleApp14
 {
     abstract class Bitmon
     {
         public string Tipo;
         public int TiempoVida;
-        public int Multiplicador;
+        public float Multiplicador;
         public int PuntosdeVida;
         public int PuntosdeAtaque;
-        public int CantidadDereproducciones;
+        public int CantidadDereproducciones = 0;
+        public bool vivo = true;
         public int[] Posicion;
 
-        virtual public void Mover(Mapa mapa)
+        public Bitmon(int[] posicion)
         {
-
+            this.Posicion = posicion;
         }
-        public bool Morir()
+        public abstract void Mover(Mapa mapa);
+        public void Morir()
         {
-            return true;
+            vivo = false;
         }
         public void Envejecer()
         {
-
-        }
-        virtual public void Relacion()
-        {
-
-        }
-        virtual public bool Nacer()
-        {
-            return false;
+            TiempoVida -= 1;
+            if (TiempoVida <= 0)
+            {
+                vivo = false;
+            }
         }
     }
 }

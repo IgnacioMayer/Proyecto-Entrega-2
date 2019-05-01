@@ -4,6 +4,7 @@ namespace ConsoleApp14
 {
     public class Mapa
     {
+<<<<<<< HEAD
         Bitmon[,,] Bitmons; // aqui van los bitmons con sus posiciones iniciales
         Terreno[,] Terrenos; // aqui va el mapa inicial con sus terrenos
 
@@ -29,5 +30,10 @@ namespace ConsoleApp14
                 Console.WriteLine(" ");
             }
 
+=======
+        Bitmon[,,] Bitmons;
+        Terreno[,] Terrenos;
+       
+>>>>>>> e8d43ec3621ba00597afaa4931289ccb8c0491fe
     }
 }
