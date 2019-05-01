@@ -50,6 +50,10 @@
     <Compile Include="Wetar.cs" />
     <Compile Include="Gofue.cs" />
     <Compile Include="Dorvalo.cs" />
+    <Compile Include="Doti.cs" />
+    <Compile Include="Ent.cs" />
+    <Compile Include="Terreno.cs" />
+    <Compile Include="Mapa.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
