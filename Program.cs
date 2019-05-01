@@ -278,6 +278,67 @@ namespace ConsoleApp13
                 }
                 Console.WriteLine();
             }
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Opción 2:");
+            Terreno[,] opcion2 = new Terreno[7, 7];
+            opcion2[0, 0] = Nieve;
+            opcion2[0, 1] = Acuático;
+            opcion2[0, 2] = Desierto;
+            opcion2[0, 3] = Desierto;
+            opcion2[0, 4] = Desierto;
+            opcion2[0, 5] = Acuático;
+            opcion2[0, 6] = Nieve;
+            opcion2[1, 0] = Acuático;
+            opcion2[1, 1] = Acuático;
+            opcion2[1, 2] = Vegetación;
+            opcion2[1, 3] = Vegetación;
+            opcion2[1, 4] = Vegetación;
+            opcion2[1, 5] = Acuático;
+            opcion2[1, 6] = Acuático;
+            opcion2[2, 0] = Desierto;
+            opcion2[2, 1] = Vegetación;
+            opcion2[2, 2] = Vegetación;
+            opcion2[2, 3] = Volcán;
+            opcion2[2, 4] = Vegetación;
+            opcion2[2, 5] = Vegetación;
+            opcion2[2, 6] = Desierto;
+            opcion2[3, 0] = Desierto;
+            opcion2[3, 1] = Vegetación;
+            opcion2[3, 2] = Volcán;
+            opcion2[3, 3] = Volcán;
+            opcion2[3, 4] = Volcán;
+            opcion2[3, 5] = Vegetación;
+            opcion2[3, 6] = Desierto;
+            opcion2[4, 0] = Desierto;
+            opcion2[4, 1] = Vegetación;
+            opcion2[4, 2] = Vegetación;
+            opcion2[4, 3] = Volcán;
+            opcion2[4, 4] = Vegetación;
+            opcion2[4, 5] = Vegetación;
+            opcion2[4, 6] = Desierto;
+            opcion2[5, 0] = Acuático;
+            opcion2[5, 1] = Acuático;
+            opcion2[5, 2] = Vegetación;
+            opcion2[5, 3] = Vegetación;
+            opcion2[5, 4] = Vegetación;
+            opcion2[5, 5] = Acuático;
+            opcion2[5, 6] = Acuático;
+            opcion2[6, 0] = Nieve;
+            opcion2[6, 1] = Acuático;
+            opcion2[6, 2] = Desierto;
+            opcion2[6, 3] = Desierto;
+            opcion2[6, 4] = Desierto;
+            opcion2[6, 5] = Acuático;
+            opcion2[6, 6] = Nieve;
+            for (int fila = 0; fila < 7; fila++)
+            {
+                for (int col = 0; col < 7; col++)
+                {
+                    Console.Write(" " + opcion2[fila, col].GetTerreno());
+                }
+                Console.WriteLine(" ");
+            }
         }
     }
 }
