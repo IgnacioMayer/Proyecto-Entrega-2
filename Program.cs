@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp13
+namespace ConsoleApp14
 {
     abstract class Bitmon
     {
@@ -37,7 +37,7 @@ namespace ConsoleApp13
             return false;
         }
     }
-    class Taplan:Bitmon
+    class Taplan : Bitmon
     {
         public override void Mover(Mapa mapa)
         {
@@ -56,7 +56,7 @@ namespace ConsoleApp13
 
         }
     }
-    class Wetar:Bitmon 
+    class Wetar : Bitmon
     {
         public override void Mover(Mapa mapa)
         {
@@ -90,7 +90,7 @@ namespace ConsoleApp13
 
         }
     }
-    class Dorvalo:Bitmon
+    class Dorvalo : Bitmon
     {
         public override void Mover(Mapa mapa)
         {
@@ -137,11 +137,42 @@ namespace ConsoleApp13
     }
     public class Terreno
     {
-        private string tipo;
-        
+        public string tipo;
+
         public string GetTerreno()
         {
-            return tipo;
+            if (tipo == "Vegetacn")
+            {
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ConsoleColor.White;
+                return "Vegetacn";
+                
+            }
+            else if (tipo == "Acuatico")
+            {
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.White;
+                return "Acuatico";
+            }
+            else if (tipo == "Desierto")
+            {
+                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                Console.ForegroundColor = ConsoleColor.White;
+                return "Desierto";
+            }
+            else if (tipo == "NieveIce")
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+                return "NieveIce";
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.White;
+                return "Volcanic";
+            }
+
         }
     }
     public class Mapa
@@ -152,20 +183,21 @@ namespace ConsoleApp13
     }
     class Program
     {
+
         static void Main(string[] args)
         {
             Terreno Vegetación = new Terreno();
-            Vegetación.tipo = "Vegetación";
+            Vegetación.tipo = "Vegetacn";
             Terreno Acuático = new Terreno();
-            Acuático.tipo = "Acuático";
-            Terreno Desierto  = new Terreno();
+            Acuático.tipo = "Acuatico";
+            Terreno Desierto = new Terreno();
             Desierto.tipo = "Desierto";
             Terreno Nieve = new Terreno();
-            Nieve.tipo = "Nieve";
+            Nieve.tipo = "NieveIce";
             Terreno Volcán = new Terreno();
-            Volcán.tipo = "Volcán";
-            
-            
+            Volcán.tipo = "Volcanic";
+
+
             Console.WriteLine("-=Bienvenido a Bitmonlandia=-");
             Console.WriteLine("Seleccione configuración inicial.");
             Console.WriteLine("Opción 1:");
@@ -223,6 +255,7 @@ namespace ConsoleApp13
             opcion1[0, 6] = Nieve;
             opcion1[0, 7] = Nieve;
             opcion1[0, 8] = Nieve;
+            opcion1[0, 9] = Nieve;
             opcion1[1, 7] = Nieve;
             opcion1[1, 8] = Nieve;
             opcion1[1, 9] = Nieve;
@@ -270,13 +303,13 @@ namespace ConsoleApp13
             opcion1[9, 7] = Volcán;
             opcion1[9, 8] = Volcán;
             opcion1[9, 9] = Volcán;
-            for(int fila = 0; fila < 10; fila++)
+            for (int fila = 0; fila < 10; fila++)
             {
-                for(int col = 0; col < 10; col++)
+                for (int col = 0; col < 10; col++)
                 {
-                    Console.Write(" " + opcion1[fila, col]);
+                    Console.Write(" " + opcion1[fila, col].GetTerreno());
                 }
-                Console.WriteLine();
+                Console.WriteLine(" ");
             }
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
@@ -339,6 +372,57 @@ namespace ConsoleApp13
                 }
                 Console.WriteLine(" ");
             }
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Opción 3:");
+            Terreno[,] opcion3 = new Terreno[6, 6];
+            opcion3[0, 0] = Acuático;
+            opcion3[0, 1] = Vegetación;
+            opcion3[0, 2] = Vegetación;
+            opcion3[0, 3] = Vegetación;
+            opcion3[0, 4] = Vegetación;
+            opcion3[0, 5] = Desierto;
+            opcion3[1, 0] = Acuático;
+            opcion3[1, 1] = Vegetación;
+            opcion3[1, 2] = Volcán;
+            opcion3[1, 3] = Volcán;
+            opcion3[1, 4] = Volcán;
+            opcion3[1, 5] = Desierto;
+            opcion3[2, 0] = Acuático;
+            opcion3[2, 1] = Vegetación;
+            opcion3[2, 2] = Volcán;
+            opcion3[2, 3] = Nieve;
+            opcion3[2, 4] = Volcán;
+            opcion3[2, 5] = Desierto;
+            opcion3[3, 0] = Acuático;
+            opcion3[3, 1] = Vegetación;
+            opcion3[3, 2] = Volcán;
+            opcion3[3, 3] = Volcán;
+            opcion3[3, 4] = Volcán;
+            opcion3[3, 5] = Desierto;
+            opcion3[4, 0] = Acuático;
+            opcion3[4, 1] = Vegetación;
+            opcion3[4, 2] = Vegetación;
+            opcion3[4, 3] = Desierto;
+            opcion3[4, 4] = Desierto;
+            opcion3[4, 5] = Desierto;
+            opcion3[0, 0] = Acuático;
+            opcion3[5, 1] = Vegetación;
+            opcion3[5, 2] = Desierto;
+            opcion3[5, 3] = Desierto;
+            opcion3[5, 4] = Desierto;
+            opcion3[5, 5] = Desierto;
+            for (int fila = 0; fila < 6; fila++)
+            {
+                for (int col = 0; col < 6; col++)
+                {
+                    Console.Write(" " + opcion3[fila, col].GetTerreno());
+                }
+                Console.WriteLine(" ");
+            }
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
         }
     }
 }
