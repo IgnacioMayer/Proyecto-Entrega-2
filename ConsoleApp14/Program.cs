@@ -1,90 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp14
 {
-    class Doti : Bitmon
-    {
-        public override void Mover(Mapa mapa)
-        {
-            base.Mover(mapa);
-        }
-        public override void Relacion()
-        {
-            base.Relacion();
-        }
-        public override bool Nacer()
-        {
-            return base.Nacer();
-        }
-    }
-    class Ent : Bitmon
-    {
-        public override void Mover(Mapa mapa)
-        {
-            base.Mover(mapa);
-        }
-        public override void Relacion()
-        {
-            base.Relacion();
-        }
-        public override bool Nacer()
-        {
-            return base.Nacer();
-        }
-    }
-    public class Terreno
-    {
-        public string tipo;
-
-        public string GetTerreno()
-        {
-            if (tipo == "Vegetacn")
-            {
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.ForegroundColor = ConsoleColor.White;
-                return "Vegetacn";
-                
-            }
-            else if (tipo == "Acuatico")
-            {
-                Console.BackgroundColor = ConsoleColor.DarkBlue;
-                Console.ForegroundColor = ConsoleColor.White;
-                return "Acuatico";
-            }
-            else if (tipo == "Desierto")
-            {
-                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                Console.ForegroundColor = ConsoleColor.White;
-                return "Desierto";
-            }
-            else if (tipo == "NieveIce")
-            {
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.Black;
-                return "NieveIce";
-            }
-            else
-            {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.ForegroundColor = ConsoleColor.White;
-                return "Volcanic";
-            }
-
-        }
-    }
-    public class Mapa
-    {
-        List<Bitmon> Bitmons;
-        List<Terreno> Terrenos;
-
-    }
     class Program
     {
-
         static void Main(string[] args)
         {
             Terreno Vegetación = new Terreno();
