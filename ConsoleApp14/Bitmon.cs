@@ -10,7 +10,7 @@ namespace ConsoleApp14
         public int PuntosdeVida;
         public int PuntosdeAtaque;
         public int CantidadDereproducciones;
-        public List<int> Posicion;
+        public int[] Posicion;
 
         virtual public void Mover(Mapa mapa)
         {

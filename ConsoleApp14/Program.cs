@@ -20,6 +20,7 @@ namespace ConsoleApp14
             Terreno Volcán = new Terreno();
             Volcán.tipo = "Volcanic";
 
+            
 
             Console.WriteLine("-=Bienvenido a Bitmonlandia=-");
             Console.WriteLine("");
