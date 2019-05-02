@@ -32,7 +32,7 @@ namespace ConsoleApp14
             {
                 for (int j = i+1; j < Bitmons.Count; j++)
                 {
-                    if (Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0] && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1])
+                    if (Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0] && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1]))
                     {
                         int[] espacio_lleno = { Bitmons[i].Posicion[0], Bitmons[i].Posicion[1] };
                         Espacios.Remove(espacio_lleno);
@@ -142,6 +142,20 @@ namespace ConsoleApp14
                         }
                     }
                 }
+               
+            }
+            
+        }
+        void CrearMapa()
+        {
+            for (int fila = 0; fila < Alto; fila++)
+            {
+                for (int col = 0; col < Ancho; col++)
+                {
+                    Terrenos[fila, col].GetTerreno();
+
+                }
+                Console.WriteLine(" ");
             }
         }
     }

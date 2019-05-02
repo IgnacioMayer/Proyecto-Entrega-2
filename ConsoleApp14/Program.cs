@@ -48,28 +48,29 @@ namespace ConsoleApp14
             Console.WriteLine("Bitmons:");
             Console.WriteLine("Taplan");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("+");
+            Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Wetar");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("+");
+            Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Gofue");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("+");
+            Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Dorvalo");
-            Console.WriteLine("+");
+            Console.WriteLine("-");
             Console.WriteLine("Doti");
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("+");
+            Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Ent");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("+");
+            Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Seleccione configuración inicial.");
             Console.WriteLine("Opción 1:");
+            /*
             Terreno[,] opcion1 = new Terreno[10, 10];
             opcion1[0, 0] = Desierto;
             opcion1[1, 0] = Desierto;
@@ -292,7 +293,7 @@ namespace ConsoleApp14
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
-      
+      */
         }
     }
 }
