@@ -16,6 +16,9 @@ namespace ConsoleApp14
         }
         public override void Mover(Mapa mapa)
         {
+            Random random = new Random();
+            int numero = random.Next(-2,3);
+           
             
         }
     }
