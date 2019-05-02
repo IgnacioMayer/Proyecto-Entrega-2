@@ -12,7 +12,7 @@ namespace ConsoleApp14
             this.TiempoVida = vida;
             this.Multiplicador = 1.2f;
             this.PuntosdeAtaque = 16;
-            this.PuntosdeVida = 30;
+            this.PuntosdeVida = 34;
         }
         public override void Mover(Mapa mapa)
         {
