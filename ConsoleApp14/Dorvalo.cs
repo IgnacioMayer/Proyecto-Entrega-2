@@ -16,7 +16,7 @@ namespace ConsoleApp14
         }
         public override void Mover(Mapa mapa)
         {
-
+            
         }
     }
 }

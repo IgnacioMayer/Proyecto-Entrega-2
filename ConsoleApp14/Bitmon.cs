@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 namespace ConsoleApp14
 {
-    abstract class Bitmon
+    public abstract class Bitmon
     {
         public string Tipo;
         public int TiempoVida;
