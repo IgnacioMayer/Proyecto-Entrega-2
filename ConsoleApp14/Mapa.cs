@@ -4,12 +4,41 @@ namespace ConsoleApp14
 {
     public class Mapa
     {
-        List<Bitmon> Bitmons; // Lista de Bitmons 
+        public List<Bitmon> Bitmons; // Lista de Bitmons 
+        public List<Bitmon> Bitmons_muertos; // lista de bitmons muertos
         Terreno[,] Terrenos; // Matriz con Terrenos
-        
+
+        public Mapa()
+        {
+            this.Bitmons = new List<Bitmon>();
+            this.Bitmons_muertos = new List<Bitmon>();
+        }
+
+        public void CrearBitmon(Bitmon papa, Bitmon mama)
+        {
+            int largo = Terrenos.GetLength(0);
+            int ancho = Terrenos.GetLength(1);
+            float probabilidad = (papa.CantidadDereproducciones * 100) / (papa.CantidadDereproducciones + mama.CantidadDereproducciones);
+            Random random = new Random();
+            int numeroRan = random.Next(1, 101);
+            string padre_ganador;
+            if (numeroRan <= probabilidad)
+            {
+                padre_ganador = papa.Tipo;
+            }
+            else
+            {
+                padre_ganador = mama.Tipo;
+            }
+            foreach (var bitmon in Bitmons) // falta aqui completar el codigo.
+            {
+
+            }
+            //ergeokrgn
+        }
+
         void CompararPosiciones()
         {
-            
             for (int c = 0; c < Bitmons.Count; c++)
             {
                 for (int d = c; d < c; d++)
@@ -21,7 +50,7 @@ namespace ConsoleApp14
                         // LOS BITMONS QUE SE REPRODUCEN
                         if (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Doti")
                         {
-                            
+
                         }
                         else if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Doti"))
                         {
@@ -47,7 +76,7 @@ namespace ConsoleApp14
                         {
 
                         }
-                    
+
                         else if (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Dorvalo")
                         {
 
@@ -56,17 +85,17 @@ namespace ConsoleApp14
                         {
 
                         }
-                        
+
                         else if ((Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Dorvalo"))
                         {
 
                         }
-                        else if (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Gofue") 
+                        else if (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Gofue")
                         {
 
                         }
-                        
-                        
+
+
                         else if (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Wetar")
                         {
 
@@ -93,7 +122,7 @@ namespace ConsoleApp14
                                 Bitmons[c].Morir();
                                 //FALTA SACARLOS DE LA LISTA
                             }
-                            
+
                             else if ((Bitmons[d].PuntosdeVida <= 0) && (Bitmons[c].PuntosdeVida > 0))
                             {
                                 Bitmons[c].PuntosdeVida += a;//SEGUN ENUNCIADO SI UN BITMON MATA A OTRO RECUPERA LOS PUNTOS DE VIDA
@@ -105,15 +134,9 @@ namespace ConsoleApp14
                                 Bitmons[d].Morir();
                             }
                         }
-
-
                     }
-
-
                 }
             }
         }
-       
-         
     }
 }
