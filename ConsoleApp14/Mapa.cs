@@ -59,28 +59,34 @@ namespace ConsoleApp14
             if (padre_ganador == "Dorvalo")
             {
                 bitmon = new Dorvalo(Espacios_vacios[numeroRan]);
+                Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Doit")
             {
                 bitmon = new Doti(Espacios_vacios[numeroRan]);
+                Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Ent")
             {
                 bitmon = new Ent(Espacios_vacios[numeroRan]);
+                Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Gofue")
             {
                 bitmon = new Gofue(Espacios_vacios[numeroRan]);
+                Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Taplan")
             {
                 bitmon = new Taplan(Espacios_vacios[numeroRan]);
+                Bitmons.Add(bitmon);
             }
+
             else if (padre_ganador == "Wetar")
             {
                 bitmon = new Wetar(Espacios_vacios[numeroRan]);
+                Bitmons.Add(bitmon);
             }
-            Bitmons.Add(bitmon);
             Espacios_vacios.RemoveAt(numeroRan);
         }
 
