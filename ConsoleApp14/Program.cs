@@ -292,6 +292,14 @@ namespace ConsoleApp14
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
+            /*
+            if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Doti")||(Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Doti")||(Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Doti")||(Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Ent")||(Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Dorvalo")||(Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Dorvalo")||(Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Gofue")||(Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Wetar")||(Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Wetar")||(Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Taplan"))
+            {
+
+            }
+       
+            
+            */
         }
     }
 }
