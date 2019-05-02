@@ -28,13 +28,14 @@ namespace ConsoleApp14
                     Espacios.Add(pos);
                 }
             }
-            for(int i = 0; i < Bitmons.Count; i++)
+            for (int i = 0; i < Bitmons.Count; i++)
             {
-                for(int j = 0; j < Espacios.Count; j++)
+                for (int j = i+1; j < Bitmons.Count; j++)
                 {
-                    if (Bitmons[i].Posicion == Espacios[j])
+                    if (Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0] && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1])
                     {
-                        Espacios.RemoveAt(j);
+                        int[] espacio_lleno = { Bitmons[i].Posicion[0], Bitmons[i].Posicion[1] };
+                        Espacios.Remove(espacio_lleno);
                     }
                 }
             }
