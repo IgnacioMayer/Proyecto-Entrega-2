@@ -20,7 +20,7 @@ namespace ConsoleApp14
             this.Espacios_vacios = new List<int[]>();
             this.Espacios_1 = new List<int[]>();
             this.Espacios_2 = new List<int[]>();
-    }
+        }
         public void Actualizar_espacios()
         {
             List<int[]> Espacios = new List<int[]>();
@@ -180,7 +180,6 @@ namespace ConsoleApp14
                 for (int col = 0; col < Ancho; col++)
                 {
                     Terrenos[fila, col].GetTerreno();
-
                 }
                 Console.WriteLine(" ");
             }
