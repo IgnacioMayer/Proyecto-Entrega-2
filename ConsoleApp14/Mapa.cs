@@ -4,40 +4,12 @@ namespace ConsoleApp14
 {
     public class Mapa
     {
-        public List<Bitmon> Bitmons; // Lista de Bitmons 
-        public List<Bitmon> Bitmons_muertos; // lista de bitmons muertos
+        List<Bitmon> Bitmons; // Lista de Bitmons 
         Terreno[,] Terrenos; // Matriz con Terrenos
-
-        public Mapa()
-        {
-            this.Bitmons = new List<Bitmon>();
-            this.Bitmons_muertos = new List<Bitmon>();
-        }
-
-        public void CrearBitmon(Bitmon papa,Bitmon mama)
-        {
-            int largo = Terrenos.GetLength(0);
-            int ancho = Terrenos.GetLength(1);
-            float probabilidad = (papa.CantidadDereproducciones * 100) / (papa.CantidadDereproducciones + mama.CantidadDereproducciones);
-            Random random = new Random();
-            int numeroRan = random.Next(1, 101);
-            string padre_ganador;
-            if (numeroRan <= probabilidad)
-            {
-                padre_ganador = papa.Tipo;
-            }
-            else
-            {
-                padre_ganador = mama.Tipo;
-            }
-            foreach (var bitmon in Bitmons) // falta aqui completar el codigo.
-            {
-
-            }
-        }
-
+        
         void CompararPosiciones()
         {
+            
             for (int c = 0; c < Bitmons.Count; c++)
             {
                 for (int d = c; d < c; d++)
@@ -133,9 +105,15 @@ namespace ConsoleApp14
                                 Bitmons[d].Morir();
                             }
                         }
+
+
                     }
+
+
                 }
             }
         }
+       
+         
     }
 }
