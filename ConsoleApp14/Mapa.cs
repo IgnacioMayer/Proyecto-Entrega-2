@@ -101,65 +101,9 @@ namespace ConsoleApp14
                         //relaciones que se forman entre bitmons.
 
                         // LOS BITMONS QUE SE REPRODUCEN
-                        if (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Doti")
+                        if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Taplan"))
                         {
-
-                        }
-                        else if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Doti"))
-                        {
-
-                        }
-                        else if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Doti"))
-                        {
-
-                        }
-                        else if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Doti"))
-                        {
-
-                        }
-                        else if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Doti"))
-                        {
-
-                        }
-                        else if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Doti"))
-                        {
-
-                        }
-                        else if (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Ent")
-                        {
-
-                        }
-
-                        else if (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Dorvalo")
-                        {
-
-                        }
-                        else if ((Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Dorvalo"))
-                        {
-
-                        }
-
-                        else if ((Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Dorvalo"))
-                        {
-
-                        }
-                        else if (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Gofue")
-                        {
-
-                        }
-
-
-                        else if (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Wetar")
-                        {
-
-                        }
-                        else if ((Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Wetar"))
-                        {
-
-                        }
-                        else if (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Taplan")
-                        {
-
+                            CrearBitmon(Bitmons[c], Bitmons[d]);
                         }
                         // LAS PELEAS
                         else if ((Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Dorvalo"))//los que pelean
@@ -173,18 +117,26 @@ namespace ConsoleApp14
                             {
                                 Bitmons[d].PuntosdeVida += b;//SEGUN ENUNCIADO SI UN BITMON MATA A OTRO RECUPERA LOS PUNTOS DE VIDA
                                 Bitmons[c].Morir();
-                                //FALTA SACARLOS DE LA LISTA
+                                Bitmons.Remove(Bitmons[c]);
+                                Bitmons_muertos.Add(Bitmons[c]);
+                                
                             }
 
                             else if ((Bitmons[d].PuntosdeVida <= 0) && (Bitmons[c].PuntosdeVida > 0))
                             {
                                 Bitmons[c].PuntosdeVida += a;//SEGUN ENUNCIADO SI UN BITMON MATA A OTRO RECUPERA LOS PUNTOS DE VIDA
                                 Bitmons[d].Morir();
+                                Bitmons.Remove(Bitmons[d]);
+                                Bitmons_muertos.Add(Bitmons[d]);
                             }
                             else if ((Bitmons[d].PuntosdeVida <= 0) && (Bitmons[c].PuntosdeVida <= 0))
                             {
                                 Bitmons[c].Morir();
                                 Bitmons[d].Morir();
+                                Bitmons.Remove(Bitmons[c]);
+                                Bitmons_muertos.Add(Bitmons[c]);
+                                Bitmons.Remove(Bitmons[d]);
+                                Bitmons_muertos.Add(Bitmons[d]);
                             }
                         }
                     }
