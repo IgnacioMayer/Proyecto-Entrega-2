@@ -292,7 +292,7 @@ namespace ConsoleApp14
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
-           
+      
         }
     }
 }
