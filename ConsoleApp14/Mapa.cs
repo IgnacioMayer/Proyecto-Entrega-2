@@ -54,7 +54,34 @@ namespace ConsoleApp14
             {
                 padre_ganador = mama.Tipo;
             }
-
+            numeroRan = random.Next(0, Espacios_vacios.Count);
+            Bitmon bitmon;
+            if (padre_ganador == "Dorvalo")
+            {
+                bitmon = new Dorvalo(Espacios_vacios[numeroRan]);
+            }
+            else if (padre_ganador == "Doit")
+            {
+                bitmon = new Doti(Espacios_vacios[numeroRan]);
+            }
+            else if (padre_ganador == "Ent")
+            {
+                bitmon = new Ent(Espacios_vacios[numeroRan]);
+            }
+            else if (padre_ganador == "Gofue")
+            {
+                bitmon = new Gofue(Espacios_vacios[numeroRan]);
+            }
+            else if (padre_ganador == "Taplan")
+            {
+                bitmon = new Taplan(Espacios_vacios[numeroRan]);
+            }
+            else if (padre_ganador == "Wetar")
+            {
+                bitmon = new Wetar(Espacios_vacios[numeroRan]);
+            }
+            Bitmons.Add(bitmon);
+            Espacios_vacios.RemoveAt(numeroRan);
         }
 
         void CompararPosiciones()
