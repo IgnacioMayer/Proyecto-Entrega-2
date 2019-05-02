@@ -4,20 +4,44 @@ namespace ConsoleApp14
 {
     public class Mapa
     {
-        public List<Bitmon> Bitmons; // Lista de Bitmons 
+        public List<Bitmon> Bitmons; // Lista de Bitmons
         public List<Bitmon> Bitmons_muertos; // lista de bitmons muertos
+        int Alto;
+        int Ancho;
+        public List<int[]> Espacios_vacios;
         Terreno[,] Terrenos; // Matriz con Terrenos
 
         public Mapa()
         {
             this.Bitmons = new List<Bitmon>();
             this.Bitmons_muertos = new List<Bitmon>();
+            this.Espacios_vacios = new List<int[]>();
         }
-
+        public void espaciosVcios()
+        {
+            List<int[]> Espacios = new List<int[]>();
+            for (int i = 0; i < Alto; i++)
+            {
+                for (int j = 0; j < Ancho; j++)
+                {
+                    int[] pos = { i, j };
+                    Espacios.Add(pos);
+                }
+            }
+            for(int i = 0; i < Bitmons.Count; i++)
+            {
+                for(int j = 0; j < Espacios.Count; j++)
+                {
+                    if (Bitmons[i].Posicion == Espacios[j])
+                    {
+                        Espacios.RemoveAt(j);
+                    }
+                }
+            }
+            Espacios_vacios = Espacios;
+        }
         public void CrearBitmon(Bitmon papa,Bitmon mama)
         {
-            int largo = Terrenos.GetLength(0);
-            int ancho = Terrenos.GetLength(1);
             float probabilidad = (papa.CantidadDereproducciones * 100) / (papa.CantidadDereproducciones + mama.CantidadDereproducciones);
             Random random = new Random();
             int numeroRan = random.Next(1, 101);
@@ -30,11 +54,7 @@ namespace ConsoleApp14
             {
                 padre_ganador = mama.Tipo;
             }
-            foreach (var bitmon in Bitmons) // falta aqui completar el codigo.
-            {
 
-            }
-            //ergeokrgn
         }
 
         void CompararPosiciones()
