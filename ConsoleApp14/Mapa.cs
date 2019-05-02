@@ -9,6 +9,8 @@ namespace ConsoleApp14
         int Alto;
         int Ancho;
         public List<int[]> Espacios_vacios;
+        public List<int[]> Espacios_1;
+        public List<int[]> Espacios_2;
         Terreno[,] Terrenos; // Matriz con Terrenos
 
         public Mapa()
@@ -16,15 +18,19 @@ namespace ConsoleApp14
             this.Bitmons = new List<Bitmon>();
             this.Bitmons_muertos = new List<Bitmon>();
             this.Espacios_vacios = new List<int[]>();
-        }
-        public void espaciosVcios()
+            this.Espacios_1 = new List<int[]>();
+            this.Espacios_2 = new List<int[]>();
+    }
+        public void Actualizar_espacios()
         {
             List<int[]> Espacios = new List<int[]>();
+            List<int[]> Espacios_v = new List<int[]>();
             for (int i = 0; i < Alto; i++)
             {
                 for (int j = 0; j < Ancho; j++)
                 {
                     int[] pos = { i, j };
+                    Espacios_v.Add(pos);
                     Espacios.Add(pos);
                 }
             }
@@ -35,11 +41,32 @@ namespace ConsoleApp14
                     if (Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0] && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1]))
                     {
                         int[] espacio_lleno = { Bitmons[i].Posicion[0], Bitmons[i].Posicion[1] };
-                        Espacios.Remove(espacio_lleno);
+                        Espacios_2.Add(espacio_lleno);
+                        Espacios_v.Remove(espacio_lleno);
                     }
                 }
             }
-            Espacios_vacios = Espacios;
+            Espacios_vacios = Espacios_v;
+            foreach (var espacio in Espacios_vacios)
+            {
+                for (int i = 0; i < Espacios.Count; i++)
+                {
+                    if (espacio[0] == Espacios[i][0] && espacio[1] == Espacios[i][1])
+                    {
+                        Espacios.Remove(espacio);
+                    }
+                }
+            }
+            foreach (var espacio in Espacios_2)
+            {
+                for (int i = 0; i < Espacios.Count; i++)
+                {
+                    if (espacio[0] == Espacios[i][0] && espacio[1] == Espacios[i][1])
+                    {
+                        Espacios.Remove(espacio);
+                    }
+                }
+            }
         }
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
