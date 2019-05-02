@@ -34,6 +34,7 @@ namespace ConsoleApp14
             {
 
             }
+            //ergeokrgn
         }
 
         void CompararPosiciones()
