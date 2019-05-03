@@ -11,15 +11,17 @@ namespace ConsoleApp14
         public List<int[]> Espacios_vacios;
         public List<int[]> Espacios_1;
         public List<int[]> Espacios_2;
-        Terreno[,] Terrenos; // Matriz con Terrenos
+        public Terreno[,] Terrenos; // Matriz con Terrenos
 
         public Mapa()
         {
-            this.Bitmons = new List<Bitmon>();
+           
             this.Bitmons_muertos = new List<Bitmon>();
             this.Espacios_vacios = new List<int[]>();
             this.Espacios_1 = new List<int[]>();
             this.Espacios_2 = new List<int[]>();
+            
+
         }
         public void Actualizar_espacios()
         {
@@ -173,12 +175,15 @@ namespace ConsoleApp14
             }
             
         }
-        void CrearMapa()
+        public void CrearMapa()
         {
+            
             for (int fila = 0; fila < Alto; fila++)
             {
+                
                 for (int col = 0; col < Ancho; col++)
                 {
+                    
                     int[] a = { fila, col };
                     if (Espacios_vacios.Contains(a))
                     {

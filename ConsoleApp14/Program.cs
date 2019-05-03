@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,7 +71,8 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Seleccione configuración inicial.");
             Console.WriteLine("Opción 1:");
-            /*
+            
+            // Creamos la matriz de terrenos predefinida
             Terreno[,] opcion1 = new Terreno[10, 10];
             opcion1[0, 0] = Desierto;
             opcion1[1, 0] = Desierto;
@@ -173,14 +175,112 @@ namespace ConsoleApp14
             opcion1[9, 7] = Volcán;
             opcion1[9, 8] = Volcán;
             opcion1[9, 9] = Volcán;
-            for (int fila = 0; fila < 10; fila++)
+
+            //Creamos la poblacion inicial de Bitmon
+
+            //Poblacion inicial de Taplan
+            int[] pos1 = { 2, 2 };
+            Taplan taplan1 = new Taplan(pos1);
+            int[] pos2 = { 4, 1 };
+            Taplan taplan2 = new Taplan(pos2);
+            int[] pos3 = { 4, 2 };
+            Taplan taplan3 = new Taplan(pos3);
+            int[] pos4 = { 5, 3 };
+            Taplan taplan4 = new Taplan(pos4);
+            int[] pos5 = { 6, 0 };
+            Taplan taplan5 = new Taplan(pos5);
+
+            //Poblacion inicial de Ents
+            int[] pos6 = { 2, 4 };
+            Ent Ent1 = new Ent(pos6);
+            int[] pos7 = { 0, 9 };
+            Ent Ent2 = new Ent(pos7);
+            int[] pos8 = { 3, 9 };
+            Ent Ent3 = new Ent(pos8);
+            int[] pos9 = { 4, 4 };
+            Ent Ent4 = new Ent(pos9);
+
+            //Poblacion inicial de Wetar
+            int[] pos10 = { 0, 5 };
+            Wetar Wetar1 = new Wetar(pos10);
+            int[] pos11 = { 2, 3 };
+            Wetar Wetar2 = new Wetar(pos11);
+            int[] pos12 = { 2, 6 };
+            Wetar Wetar3 = new Wetar(pos12);
+
+            //Poblacion inicial de Gofue
+            int[] pos13 = { 1, 7 };
+            Gofue Gofue1 = new Gofue(pos13);
+            int[] pos14 = { 7, 7 };
+            Gofue Gofue2 = new Gofue(pos14);
+            int[] pos15 = { 9, 5 };
+            Gofue Gofue3 = new Gofue(pos15);
+
+            //Poblacion inicial Dorvalo
+            int[] pos16 = { 1, 7 };
+            Dorvalo Dorvalo1 = new Dorvalo(pos16);
+            int[] pos17 = { 3, 7 };
+            Dorvalo Dorvalo2 = new Dorvalo(pos17);
+            int[] pos18 = { 2, 7 };
+            Dorvalo Dorvalo3 = new Dorvalo(pos18);
+
+            //Poblacion inicial Doti
+            int[] pos19 = { 1, 5 };
+            Doti Doti1 = new Doti(pos19);
+            int[] pos20 = { 9, 7 };
+            Doti Doti2 = new Doti(pos20);
+            int[] pos21 = { 0, 0 };
+            Doti Doti3 = new Doti(pos21);
+            int[] pos22 = { 5, 7 };
+            Doti Doti4 = new Doti(pos22);
+
+            List<Bitmon> bitmons1 = new List<Bitmon>();
+            bitmons1.Add(taplan1);
+            bitmons1.Add(taplan2);
+            bitmons1.Add(taplan3);
+            bitmons1.Add(taplan4);
+            bitmons1.Add(taplan5);
+            bitmons1.Add(Ent1);
+            bitmons1.Add(Ent2);
+            bitmons1.Add(Ent3);
+            bitmons1.Add(Ent4);
+            bitmons1.Add(Wetar1);
+            bitmons1.Add(Wetar2);
+            bitmons1.Add(Wetar3);
+            bitmons1.Add(Gofue1);
+            bitmons1.Add(Gofue2);
+            bitmons1.Add(Gofue3);
+            bitmons1.Add(Dorvalo1);
+            bitmons1.Add(Dorvalo2);
+            bitmons1.Add(Dorvalo3);
+            bitmons1.Add(Doti1);
+            bitmons1.Add(Doti2);
+            bitmons1.Add(Doti3);
+            bitmons1.Add(Doti4);
+            //AGREGAMOS LA POBLACION INICIAL AL MAPA OPCION 1
+            Mapa mapa1 = new Mapa();
+            mapa1.Alto = 10;
+            mapa1.Ancho = 10;
+            mapa1.Terrenos = opcion1;
+            mapa1.Bitmons = bitmons1;
+            mapa1.Actualizar_espacios();
+            Console.WriteLine("vacios");
+            for (int i = 0; i < mapa1.Espacios_vacios.Count; i++)
             {
-                for (int col = 0; col < 10; col++)
-                {
-                    Console.Write(" " + opcion1[fila, col].GetTerreno());
-                }
-                Console.WriteLine(" ");
+                Console.WriteLine(mapa1.Espacios_vacios[i][0]+","+ mapa1.Espacios_vacios[i][1]);
             }
+            Console.WriteLine("tiene 1");
+            for (int i = 0; i < mapa1.Espacios_1.Count; i++)
+            {
+                Console.WriteLine(mapa1.Espacios_1[i][0] + "," + mapa1.Espacios_1[i][1]);
+            }
+            Console.WriteLine("tiene 2");
+            for (int i = 0; i < mapa1.Espacios_2.Count; i++)
+            {
+                Console.WriteLine(mapa1.Espacios_2[i][0] + "," + mapa1.Espacios_2[i][1]);
+            }
+
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Opción 2:");
@@ -234,14 +334,7 @@ namespace ConsoleApp14
             opcion2[6, 4] = Desierto;
             opcion2[6, 5] = Acuático;
             opcion2[6, 6] = Nieve;
-            for (int fila = 0; fila < 7; fila++)
-            {
-                for (int col = 0; col < 7; col++)
-                {
-                    Console.Write(" " + opcion2[fila, col].GetTerreno());
-                }
-                Console.WriteLine(" ");
-            }
+           
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Opción 3:");
@@ -282,18 +375,11 @@ namespace ConsoleApp14
             opcion3[5, 3] = Desierto;
             opcion3[5, 4] = Desierto;
             opcion3[5, 5] = Desierto;
-            for (int fila = 0; fila < 6; fila++)
-            {
-                for (int col = 0; col < 6; col++)
-                {
-                    Console.Write(" " + opcion3[fila, col].GetTerreno());
-                }
-                Console.WriteLine(" ");
-            }
+           
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
-      */
+      
         }
     }
 }
