@@ -258,19 +258,20 @@ namespace ConsoleApp14
             mapa1.Bitmons = bitmons1;
             mapa1.Actualizar_espacios();
             Console.WriteLine("vacios");
-            for (int i = 0; i < mapa1.Espacios_vacios.Count; i++)
+            foreach(var espacios in mapa1.Espacios_vacios)
             {
-                Console.WriteLine(mapa1.Espacios_vacios[i][0]+","+ mapa1.Espacios_vacios[i][1]);
+                Console.WriteLine(espacios[0]+","+ espacios[1]);
             }
             Console.WriteLine("tiene 1");
-            for (int i = 0; i < mapa1.Espacios_1.Count; i++)
+            foreach(var espacios in mapa1.Espacios_1)
             {
-                Console.WriteLine(mapa1.Espacios_1[i][0] + "," + mapa1.Espacios_1[i][1]);
+                Console.WriteLine(espacios[0] + "," + espacios[1]);
             }
             Console.WriteLine("tiene 2");
-            for (int i = 0; i < mapa1.Espacios_2.Count; i++)
+            foreach(var espacios in mapa1.Espacios_2)
             {
-                Console.WriteLine(mapa1.Espacios_2[i][0] + "," + mapa1.Espacios_2[i][1]);
+                Console.WriteLine(espacios[0] + "," + espacios[1]);
+
             }
 
 
