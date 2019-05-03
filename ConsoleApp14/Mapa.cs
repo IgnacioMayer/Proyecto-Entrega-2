@@ -6,8 +6,8 @@ namespace ConsoleApp14
     {
         public List<Bitmon> Bitmons; // Lista de Bitmons
         public List<Bitmon> Bitmons_muertos; // lista de bitmons muertos
-        int Alto;
-        int Ancho;
+        public int Alto;
+        public int Ancho;
         public List<int[]> Espacios_vacios;
         public List<int[]> Espacios_1;
         public List<int[]> Espacios_2;
@@ -185,15 +185,69 @@ namespace ConsoleApp14
                         Terrenos[fila, col].GetTerreno();
                         Console.WriteLine(" ");
                     }
-                    else if (Espacios_1.Contains(a))// CONTIUARA..........
+                    else if (Espacios_1.Contains(a))
                     {
                         Terrenos[fila, col].GetTerreno();
-                        Console.WriteLine(" ");
+                        for (int i = 0; i < Bitmons.Count; i++)
+                        {
+                            if (Bitmons[i].Posicion == a)
+                            {
+                                if (Bitmons[i].Tipo == "Doti")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("-");
+                                }
+                                else if (Bitmons[i].Tipo == "Dorvalo")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.WriteLine("-");
+                                }
+                                else if (Bitmons[i].Tipo == "Ent")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.WriteLine("-");
+                                }
+                                else if (Bitmons[i].Tipo == "Gofue")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("-");
+                                }
+                                else if (Bitmons[i].Tipo == "Taplan")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("-");
+                                }
+                                else if (Bitmons[i].Tipo == "Wetar")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.WriteLine("-");
+                                }
+                            }
+                        }
+                            Console.WriteLine(" ");
                     }
                     else if (Espacios_2.Contains(a))
                     {
                         Terrenos[fila, col].GetTerreno();
-                        Console.WriteLine(" ");
+                        for (int c = 0; c < Bitmons.Count; c++)
+                        {
+                            for (int d = c; d < c; d++)
+                            {
+                                if ((Bitmons[c].Posicion == Bitmons[d].Posicion) && (Bitmons[c].Posicion == a))
+                                {
+                                    if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Taplan"))
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("+");
+                                    }
+                                    else if ((Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Dorvalo"))//los que pelean
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Black;
+                                        Console.WriteLine("+");
+                                    }
+                                }
+                            }
+                        }
                     }
 
                 }
