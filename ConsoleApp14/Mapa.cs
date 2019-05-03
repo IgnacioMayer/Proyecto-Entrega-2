@@ -179,7 +179,23 @@ namespace ConsoleApp14
             {
                 for (int col = 0; col < Ancho; col++)
                 {
-                    Terrenos[fila, col].GetTerreno();
+                    int[] a = { fila, col };
+                    if (Espacios_vacios.Contains(a))
+                    {
+                        Terrenos[fila, col].GetTerreno();
+                        Console.WriteLine(" ");
+                    }
+                    else if (Espacios_1.Contains(a))// CONTIUARA..........
+                    {
+                        Terrenos[fila, col].GetTerreno();
+                        Console.WriteLine(" ");
+                    }
+                    else if (Espacios_2.Contains(a))
+                    {
+                        Terrenos[fila, col].GetTerreno();
+                        Console.WriteLine(" ");
+                    }
+
                 }
                 Console.WriteLine(" ");
             }
