@@ -28,7 +28,6 @@ namespace ConsoleApp14
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
             }
-
         }
     }
 }

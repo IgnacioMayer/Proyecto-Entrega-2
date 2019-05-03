@@ -23,10 +23,7 @@ namespace ConsoleApp14
 
             
 
-            Console.WriteLine("-=Bienvenido a Bitmonlandia=-");
-            Console.WriteLine("");
-            Console.WriteLine("Terrenos:");
-            Console.WriteLine("Vegetación");
+            Console.WriteLine("-=Bienvenido a Bitmonlandia=-\nTerrenos:\nVegetación");
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(" ");
             Console.BackgroundColor = ConsoleColor.Black;
@@ -46,8 +43,7 @@ namespace ConsoleApp14
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(" ");
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("Bitmons:");
-            Console.WriteLine("Taplan");
+            Console.WriteLine("Bitmons\nTaplan");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
@@ -59,9 +55,7 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Dorvalo");
-            Console.WriteLine("-");
-            Console.WriteLine("Doti");
+            Console.WriteLine("Dorvalo\n-\nDoti");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
@@ -69,8 +63,7 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Seleccione configuración inicial.");
-            Console.WriteLine("Opción 1:");
+            Console.WriteLine("Seleccione configuración inicial.\nOpción 1:");
             
             // Creamos la matriz de terrenos predefinida
             Terreno[,] opcion1 = new Terreno[10, 10];
