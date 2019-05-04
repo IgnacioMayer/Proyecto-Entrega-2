@@ -34,21 +34,16 @@ namespace ConsoleApp14
             }
             for (int i = 0; i < Bitmons.Count; i++)
             {
+                int[] arr = Bitmons[i].Posicion;
+                Espacios_vacios.Remove(arr);
+                Espacios_1.Add(arr);
                 for (int j = i + 1; j < Bitmons.Count; j++)
                 {
                     if ((Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0]) && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1]))
                     {
-                        Espacios_2.Add(Bitmons[i].Posicion);   
+                        Espacios_2.Add(arr);
+                        Espacios_1.Remove(arr);
                     }
-                    else
-                    {
-                        if (Espacios_1.Contains(Bitmons[i].Posicion) == false)
-                        {
-                            Espacios_1.Add(Bitmons[i].Posicion);
-                        }
-                    }
-                    
-                    
                 }
             }
         }
