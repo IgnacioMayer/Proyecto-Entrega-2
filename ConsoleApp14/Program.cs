@@ -10,18 +10,11 @@ namespace ConsoleApp14
     {
         static void Main(string[] args)
         {
-            Terreno Vegetación = new Terreno();
-            Vegetación.tipo = "Vegetacn";
-            Terreno Acuático = new Terreno();
-            Acuático.tipo = "Acuatico";
-            Terreno Desierto = new Terreno();
-            Desierto.tipo = "Desierto";
-            Terreno Nieve = new Terreno();
-            Nieve.tipo = "NieveIce";
-            Terreno Volcán = new Terreno();
-            Volcán.tipo = "Volcanic";
-
-            
+            Terreno Vegetación = new Terreno("Vegetacn");
+            Terreno Acuático = new Terreno("Acuatico");
+            Terreno Desierto = new Terreno("Desierto");
+            Terreno Nieve = new Terreno("NieveIce");
+            Terreno Volcán = new Terreno("Volcanic");
 
             Console.WriteLine("-=Bienvenido a Bitmonlandia=-\nTerrenos:\nVegetación");
             Console.BackgroundColor = ConsoleColor.DarkGreen;

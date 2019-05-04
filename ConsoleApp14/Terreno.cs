@@ -6,6 +6,10 @@ namespace ConsoleApp14
     {
         public string tipo;
 
+        public Terreno(string tipo)
+        {
+            this.tipo = tipo;
+        }
         public void GetTerreno()
         {
             if (tipo == "Vegetacn")
