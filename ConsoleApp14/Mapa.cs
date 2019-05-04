@@ -22,20 +22,34 @@ namespace ConsoleApp14
         }
         public void Actualizar_espacios()
         {
-            List<int[]> Espacios = new List<int[]>();
+            List<int[]> Espacios_v = new List<int[]>();
+            List<int[]> Espacios1 = new List<int[]>();
+            List<int[]> Espacios2 = new List<int[]>();
             for (int i = 0; i < Alto; i++)
             {
                 for (int j = 0; j < Ancho; j++)
                 {
                     int[] pos = { i, j };
-                    Espacios_vacios.Add(pos);
-                    Espacios.Add(pos);
+                    for (int a = 0; a < Bitmons.Count; a++)
+                    {
+                        for (int b = i + 1; b < Bitmons.Count; b++)
+                        {
+                            if ((Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0]) && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1]))
+                            {
+                                Espacios2.Add(pos);
+                            }
+                        }
+                    }
                 }
+                Espacios_vacios = Espacios_v;
+                Espacios_1 = Espacios1;
+                Espacios_2 = Espacios2;
             }
+            /*
             for (int i = 0; i < Bitmons.Count; i++)
             {
                 int[] arr = Bitmons[i].Posicion;
-                Espacios_vacios.Remove(arr);
+                Espacios_v.Remove(arr);
                 Espacios_1.Add(arr);
                 for (int j = i + 1; j < Bitmons.Count; j++)
                 {
@@ -46,6 +60,7 @@ namespace ConsoleApp14
                     }
                 }
             }
+            */
         }
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
@@ -148,9 +163,7 @@ namespace ConsoleApp14
                         }
                     }
                 }
-               
             }
-            
         }
         public void CrearMapa()
         {
