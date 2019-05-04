@@ -25,26 +25,53 @@ namespace ConsoleApp14
             List<int[]> Espacios_v = new List<int[]>();
             List<int[]> Espacios1 = new List<int[]>();
             List<int[]> Espacios2 = new List<int[]>();
+            List<int[]> Espacios_b = new List<int[]>();
+            for (int i = 0; i < Bitmons.Count; i++)
+            {
+                int[] pos = Bitmons[i].Posicion;
+                Espacios_b.Add(pos);
+                for (int j = i + 1; j < Bitmons.Count; j++)
+                {
+                    if ((Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0]) && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1]))
+                    {
+                        Espacios2.Add(pos);
+                    }
+                }
+            }
             for (int i = 0; i < Alto; i++)
             {
                 for (int j = 0; j < Ancho; j++)
                 {
-                    int[] pos = { i, j };
-                    for (int a = 0; a < Bitmons.Count; a++)
+                    int[] pos = {i, j};
+                    bool hay_1_bitmon = false;
+                    bool hay_2_bitmon = false;
+                    foreach (var bitmon in Bitmons)
                     {
-                        for (int b = i + 1; b < Bitmons.Count; b++)
+                        if (bitmon.Posicion[0] == i && bitmon.Posicion[1] == j)
                         {
-                            if ((Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0]) && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1]))
-                            {
-                                Espacios2.Add(pos);
-                            }
+                            hay_1_bitmon = true;
                         }
                     }
+                    foreach (var espacio in Espacios2)
+                    {
+                        if (espacio[0] == i && espacio[1] == j)
+                        {
+                            hay_2_bitmon = true;
+                        }
+                    }
+                    if (hay_1_bitmon && !hay_2_bitmon)
+                    {
+                        Espacios1.Add(pos);
+                    }
+                    else if (!hay_1_bitmon)
+                    {
+                        Espacios_v.Add(pos);
+                    }
                 }
-                Espacios_vacios = Espacios_v;
-                Espacios_1 = Espacios1;
-                Espacios_2 = Espacios2;
             }
+            Espacios_vacios = Espacios_v;
+            Espacios_1 = Espacios1;
+            Espacios_2 = Espacios2;
             /*
             for (int i = 0; i < Bitmons.Count; i++)
             {

@@ -368,26 +368,6 @@ namespace ConsoleApp14
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
-
-            List<int[]> lista = new List<int[]>();
-            int[] a = { 0, 4};
-            int[] b = { 1, 2 };
-            int[] c = { 1, 5 };
-            int[] d = { 3, 1 };
-            lista.Add(a);
-            lista.Add(b);
-            lista.Add(c);
-            lista.Add(d);
-            foreach (var arr in lista)
-            {
-                Console.WriteLine(arr[0]+","+arr[1]);
-            }
-            lista.Remove(a);
-
-            foreach (var arr in lista)
-            {
-                Console.WriteLine(arr[0] + "," + arr[1]);
-            }
         }
     }
 }
