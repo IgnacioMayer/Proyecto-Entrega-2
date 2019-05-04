@@ -29,7 +29,9 @@ namespace ConsoleApp14
                 numero = random.Next(-1, 2);
             }
             Posicion[1] += numero;
+            /*
             mapa.Actualizar_espacios();
+            */
         }
     }
 }

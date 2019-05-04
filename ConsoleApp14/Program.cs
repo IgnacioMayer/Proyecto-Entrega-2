@@ -250,6 +250,7 @@ namespace ConsoleApp14
             bitmons1.Add(Doti2);
             bitmons1.Add(Doti3);
             bitmons1.Add(Doti4);
+
             //AGREGAMOS LA POBLACION INICIAL AL MAPA OPCION 1
             Mapa mapa1 = new Mapa();
             mapa1.Alto = 10;
@@ -257,6 +258,7 @@ namespace ConsoleApp14
             mapa1.Terrenos = opcion1;
             mapa1.Bitmons = bitmons1;
             mapa1.Actualizar_espacios();
+            mapa1.CrearMapa();
             Console.WriteLine("vacios");
             foreach(var espacios in mapa1.Espacios_vacios)
             {
