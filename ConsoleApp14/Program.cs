@@ -369,28 +369,75 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
             */
-            Console.WriteLine("\nantes: [{0},{1}]", taplan1.Posicion[0], taplan1.Posicion[1]);
-            taplan1.Mover(mapa1);
-            Console.WriteLine("despues: [{0},{1}]", taplan1.Posicion[0], taplan1.Posicion[1]);
-            Console.WriteLine("");
-            Console.WriteLine();
-            for (int i = 0; i < mapa1.Alto; i++)
+
+            while (true)
             {
-                for (int j = 0; j < mapa1.Ancho; j++)
+                string input = Console.ReadLine();
+                if (input == "1")
                 {
-                    Console.Write("__ ");
+                    break;
                 }
-                Console.Write("\n");
-                for (int j = 0; j < mapa1.Ancho; j++)
+                Console.Write("\nantes: [{0},{1}]", taplan1.Posicion[0], taplan1.Posicion[1]);
+                taplan1.Mover(mapa1);
+                Console.Write(", despues: [{0},{1}]\n\n   ", taplan1.Posicion[0], taplan1.Posicion[1]);
+
+                for (int i = 0; i < mapa1.Ancho; i++)
                 {
-                    Console.Write("| ");
+                    Console.Write(" {0}  ", i);
                 }
-                Console.Write("\n");
+                Console.WriteLine("");
+                for (int i = 0; i < mapa1.Alto; i++)
+                {
+                    Console.Write("   ");
+                    for (int j = 0; j < mapa1.Ancho; j++)
+                    {
+                        Console.Write(" __ ");
+                    }
+                    Console.Write("\n {0} ",i);
+                    for (int j = 0; j < mapa1.Ancho; j++)
+                    {
+                        int[] pos = { i, j };
+                        bool existe1 = false;
+                        bool existe2 = false;
+                        foreach (var espacio in mapa1.Espacios_1)
+                        {
+                            if (espacio[0] == pos[0] && espacio[1] == pos[1])
+                            {
+                                existe1 = true;
+                            }
+                        }
+                        foreach (var espacio in mapa1.Espacios_2)
+                        {
+                            if (espacio[0] == pos[0] && espacio[1] == pos[1])
+                            {
+                                existe2 = true;
+                            }
+                        }
+                        if (existe1)
+                        {
+                            Console.Write("| * ");
+
+                        }
+                        else if (existe2)
+                        {
+                            Console.Write("|** ");
+                        }
+                        else
+                        {
+                            Console.Write("|   ");
+
+                        }
+                    }
+                    Console.Write("|\n");
+                }
+                Console.Write("   ");
+                for (int i = 0; i < mapa1.Ancho; i++)
+                {
+                    Console.Write(" __ ");
+                }
+                Console.WriteLine("");
             }
-            for (int i = 0; i < mapa1.Ancho; i++)
-            {
-                Console.Write("__ ");
-            }
+
             /*
             Console.WriteLine("vacios");
             foreach (var espacios in mapa1.Espacios_vacios)
