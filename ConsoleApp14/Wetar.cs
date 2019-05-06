@@ -19,10 +19,13 @@ namespace ConsoleApp14
         public override void Mover(Mapa mapa)
         {
             List<int[]> lista = new List<int[]>();
-
+            foreach (var terreno in mapa.Terrenos)
+            {
+                
+            }
             Random random = new Random();
             int numero = random.Next(-1, 2);
-            while (Posicion[0] + numero > mapa.Alto)
+            while (Posicion[0] + numero > mapa.Alto && true)
             {
                 numero = random.Next(-1, 2);
             }
@@ -33,9 +36,7 @@ namespace ConsoleApp14
                 numero = random.Next(-1, 2);
             }
             Posicion[1] += numero;
-
             mapa.Actualizar_espacios();
-
         }
     }
 }
