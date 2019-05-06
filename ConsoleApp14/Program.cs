@@ -16,6 +16,7 @@ namespace ConsoleApp14
             Terreno Nieve = new Terreno("NieveIce");
             Terreno Volcán = new Terreno("Volcanic");
 
+            /*
             Console.WriteLine("-=Bienvenido a Bitmonlandia=-\nTerrenos:\nVegetación");
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(" ");
@@ -57,7 +58,7 @@ namespace ConsoleApp14
             Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Seleccione configuración inicial.\nOpción 1:");
-            
+            */
             // Creamos la matriz de terrenos predefinida
             Terreno[,] opcion1 = new Terreno[10, 10];
             opcion1[0, 0] = Desierto;
@@ -269,7 +270,7 @@ namespace ConsoleApp14
 
             }
 
-
+            /*
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Opción 2:");
@@ -368,6 +369,7 @@ namespace ConsoleApp14
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
+            */           
         }
     }
 }
