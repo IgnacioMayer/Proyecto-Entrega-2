@@ -159,7 +159,7 @@ namespace ConsoleApp14
             opcion1[9, 5] = Volcán;
             opcion1[9, 6] = Volcán;
             opcion1[9, 7] = Volcán;
-            opcion1[9, 8] = Volcán;
+            opcion1[9, 8] = Volcán; 
             opcion1[9, 9] = Volcán;
 
             //Creamos la poblacion inicial de Bitmon

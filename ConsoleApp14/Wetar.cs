@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace ConsoleApp14
 {
     class Wetar : Bitmon
@@ -16,6 +18,8 @@ namespace ConsoleApp14
         }
         public override void Mover(Mapa mapa)
         {
+            List<int[]> lista = new List<int[]>();
+
             Random random = new Random();
             int numero = random.Next(-1, 2);
             while (Posicion[0] + numero > mapa.Alto)
@@ -29,9 +33,9 @@ namespace ConsoleApp14
                 numero = random.Next(-1, 2);
             }
             Posicion[1] += numero;
-            /*
+
             mapa.Actualizar_espacios();
-            */
+
         }
     }
 }
