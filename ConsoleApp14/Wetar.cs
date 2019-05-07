@@ -53,6 +53,7 @@ namespace ConsoleApp14
             {
                 int numero = random.Next(0, lista.Count);
                 Posicion = lista[numero];
+                mapa.Actualizar_espacios();
             }
         }
         public override void Show()
