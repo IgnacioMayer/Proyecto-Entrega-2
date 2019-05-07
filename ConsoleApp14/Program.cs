@@ -360,9 +360,10 @@ namespace ConsoleApp14
                 {
                     break;
                 }
-                Console.Write("\nantes: [{0},{1}]", taplan1.Posicion[0], taplan1.Posicion[1]);
-                taplan1.Mover(mapa1);
-                Console.Write(", despues: [{0},{1}]\n\n   ", taplan1.Posicion[0], taplan1.Posicion[1]);
+                Bitmon bi = Dorvalo1;
+                Console.Write("\nantes: [{0},{1}]", bi.Posicion[0], bi.Posicion[1]);
+                bi.Mover(mapa1);
+                Console.Write(", despues: [{0},{1}]\n\n   ", bi.Posicion[0], bi.Posicion[1]);
 
                 for (int i = 0; i < mapa1.Ancho; i++)
                 {
@@ -372,6 +373,11 @@ namespace ConsoleApp14
                 for (int i = 0; i < mapa1.Alto; i++)
                 {
                     Console.Write("   ");
+                    for (int j = 0; j < mapa1.Ancho; j++)
+                    {
+                        Console.Write(" __ ");
+                    }
+                    Console.Write("            ");
                     for (int j = 0; j < mapa1.Ancho; j++)
                     {
                         Console.Write(" __ ");
@@ -410,9 +416,45 @@ namespace ConsoleApp14
                             Console.Write("|   ");
                         }
                     }
+                    Console.Write("|           ");
+                    for (int j = 0; j < mapa1.Ancho; j++)
+                    {
+                        if (mapa1.Terrenos[i, j].tipo == "Vegetacn")
+                        {
+                            Console.Write("|   ");
+
+                        }
+                        if (mapa1.Terrenos[i, j].tipo == "Acuatico")
+                        {
+                            Console.Write("| < ");
+
+                        }
+                        if (mapa1.Terrenos[i, j].tipo == "Desierto")
+                        {
+                            Console.Write("| : ");
+
+                        }
+                        if (mapa1.Terrenos[i, j].tipo == "NieveIce")
+                        {
+                            Console.Write("| o ");
+
+                        }
+                        if (mapa1.Terrenos[i, j].tipo == "Volcanic")
+                        {
+                            Console.Write("| ! ");
+
+                        }
+
+                    }
                     Console.Write("|\n");
+
                 }
                 Console.Write("   ");
+                for (int i = 0; i < mapa1.Ancho; i++)
+                {
+                    Console.Write(" __ ");
+                }
+                Console.Write("            ");
                 for (int i = 0; i < mapa1.Ancho; i++)
                 {
                     Console.Write(" __ ");
