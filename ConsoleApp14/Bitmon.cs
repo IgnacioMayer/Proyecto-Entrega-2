@@ -29,5 +29,9 @@ namespace ConsoleApp14
                 vivo = false;
             }
         }
+        virtual public void Show()
+        {
+
+        }
     }
 }

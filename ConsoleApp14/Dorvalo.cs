@@ -17,19 +17,26 @@ namespace ConsoleApp14
         public override void Mover(Mapa mapa)
         {
             Random random = new Random();
-            int numero = random.Next(-2, 3);
-            while (Posicion[0] + numero > mapa.Alto | Posicion[0] + numero < 0)
+            int numero = random.Next(-2,3);
+            while (Posicion[0]+numero > mapa.Alto)
             {
-                numero = random.Next(-1, 2);
+                numero = random.Next(-2, 3);
             }
             Posicion[0] += numero;
-            numero = random.Next(-1, 2);
-            while (Posicion[1] + numero > mapa.Alto | Posicion[1] + numero < 0)
+            numero = random.Next(-2, 3);
+            while (Posicion[1] + numero < 0)
             {
-                numero = random.Next(-1, 2);
+                numero = random.Next(-2, 3);
             }
             Posicion[1] += numero;
+
             mapa.Actualizar_espacios();
+
+        }
+        public override void Show()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("-");
         }
     }
 }

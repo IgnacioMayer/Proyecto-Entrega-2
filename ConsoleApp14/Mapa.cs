@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Linq;
 namespace ConsoleApp14
+
 {
     public class Mapa
     {
@@ -72,22 +74,7 @@ namespace ConsoleApp14
             Espacios_vacios = Espacios_v;
             Espacios_1 = Espacios1;
             Espacios_2 = Espacios2;
-            /*
-            for (int i = 0; i < Bitmons.Count; i++)
-            {
-                int[] arr = Bitmons[i].Posicion;
-                Espacios_v.Remove(arr);
-                Espacios_1.Add(arr);
-                for (int j = i + 1; j < Bitmons.Count; j++)
-                {
-                    if ((Bitmons[i].Posicion[0] == Bitmons[j].Posicion[0]) && (Bitmons[i].Posicion[1] == Bitmons[j].Posicion[1]))
-                    {
-                        Espacios_2.Add(arr);
-                        Espacios_1.Remove(arr);
-                    }
-                }
-            }
-            */
+           
         }
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
@@ -139,7 +126,7 @@ namespace ConsoleApp14
             Espacios_vacios.RemoveAt(numeroRan);
         }
 
-        void CompararPosiciones()
+        public void Relaciones()
         {
             for (int c = 0; c < Bitmons.Count; c++)
             {
@@ -192,89 +179,53 @@ namespace ConsoleApp14
                 }
             }
         }
-        public void CrearMapa()
+        
+        
+        public void Show()
         {
-            
-            for (int fila = 0; fila < Alto; fila++)
+            // Creo una Matriz con las celdas que contengan un terreno y un numero n de bitmons que se encuentren en una posicion
+            Celda[,] celdas = new Celda[Alto, Ancho];
+            for (int i = 0; i < Alto; i++)
             {
-                
-                for (int col = 0; col < Ancho; col++)
+                for (int j = 0; j < Ancho; j++)
                 {
-                    
-                    int[] a = { fila, col };
-                    if (Espacios_vacios.Contains(a))
+                    int[] posicion_actual = { i, j };
+                    Celda celda = new Celda();
+                    celda.terreno = Terrenos[i, j];
+                    var bitmon = Bitmons.Where(emp => emp.Posicion == posicion_actual);
+                    foreach (var emp in bitmon)
                     {
-                        Terrenos[fila, col].GetTerreno();
-                        Console.WriteLine(" ");
+                        celda.bitmons.Add(emp);
                     }
-                    else if (Espacios_1.Contains(a))
+                    celdas[i, j] = celda;
+                }
+            }
+            for (int i = 0; i < Alto; i++)
+            {
+                for (int j = 0; j < Ancho; j++)
+                {
+                    celdas[i, j].terreno.GetTerreno();
+                    if (celdas[i,j].bitmons.Count == 1)
                     {
-                        Terrenos[fila, col].GetTerreno();
-                        for (int i = 0; i < Bitmons.Count; i++)
+                        celdas[i, j].bitmons[0].Show();
+                    }
+                    else if (celdas[i,j].bitmons.Count == 2)
+                    {
+                        if ((celdas[i,j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Taplan"))
                         {
-                            if (Bitmons[i].Posicion == a)
-                            {
-                                if (Bitmons[i].Tipo == "Doti")
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
-                                    Console.WriteLine("-");
-                                }
-                                else if (Bitmons[i].Tipo == "Dorvalo")
-                                {
-                                    Console.ForegroundColor = ConsoleColor.White;
-                                    Console.WriteLine("-");
-                                }
-                                else if (Bitmons[i].Tipo == "Ent")
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Yellow;
-                                    Console.WriteLine("-");
-                                }
-                                else if (Bitmons[i].Tipo == "Gofue")
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("-");
-                                }
-                                else if (Bitmons[i].Tipo == "Taplan")
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.WriteLine("-");
-                                }
-                                else if (Bitmons[i].Tipo == "Wetar")
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-                                    Console.WriteLine("-");
-                                }
-                            }
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("+");
                         }
-                            Console.WriteLine(" ");
-                    }
-                    else if (Espacios_2.Contains(a))
-                    {
-                        Terrenos[fila, col].GetTerreno();
-                        for (int c = 0; c < Bitmons.Count; c++)
+                        else if ((celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Dorvalo"))
                         {
-                            for (int d = c; d < c; d++)
-                            {
-                                if ((Bitmons[c].Posicion == Bitmons[d].Posicion) && (Bitmons[c].Posicion == a))
-                                {
-                                    if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Taplan"))
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.WriteLine("+");
-                                    }
-                                    else if ((Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Dorvalo"))//los que pelean
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Black;
-                                        Console.WriteLine("+");
-                                    }
-                                }
-                            }
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.WriteLine("+");
                         }
                     }
-
                 }
                 Console.WriteLine(" ");
             }
+
         }
     }
 }

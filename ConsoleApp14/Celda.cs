@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp14
 {
-    class Celda
+    public class Celda
     {
+        public Terreno terreno;
+        public List<Bitmon> bitmons;
+
     }
 }

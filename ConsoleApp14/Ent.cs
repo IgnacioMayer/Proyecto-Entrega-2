@@ -17,5 +17,10 @@ namespace ConsoleApp14
         public override void Mover(Mapa mapa)
         {
         }
+        public override void Show()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("-");
+        }
     }
 }
