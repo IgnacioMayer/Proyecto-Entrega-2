@@ -366,11 +366,12 @@ namespace ConsoleApp14
                 {
                     bitmon.Mover(mapa1);
                 }
+                mapa1.Relaciones();
                 //Bitmon bi = Dorvalo1;
                 //Console.Write("\nantes: [{0},{1}]", bi.Posicion[0], bi.Posicion[1]);
                 //bi.Mover(mapa1);
                 //Console.Write(", despues: [{0},{1}]\n\n   ", bi.Posicion[0], bi.Posicion[1]);
-
+                Console.Write("\n\n   ");
                 for (int i = 0; i < mapa1.Ancho; i++)
                 {
                     Console.Write(" {0}  ", i);
@@ -466,6 +467,14 @@ namespace ConsoleApp14
                     Console.Write(" __ ");
                 }
                 Console.WriteLine("");
+                foreach (var bitmon in mapa1.Bitmons)
+                {
+                    Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3} ",bitmon.Tipo, bitmon.Posicion[0],bitmon.Posicion[1],bitmon.PuntosdeVida);
+                }
+                foreach (var bitmon in mapa1.Bitmons_creados)
+                {
+                    Console.WriteLine("se creo {0} -> [{1},{2}]", bitmon.Tipo, bitmon.Posicion[0], bitmon.Posicion[1]);
+                }
                 mes += 1;
             }
         }
