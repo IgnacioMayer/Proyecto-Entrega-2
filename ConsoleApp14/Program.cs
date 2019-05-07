@@ -354,17 +354,22 @@ namespace ConsoleApp14
             Console.ReadKey();
             */
 
-            while (true)
+            int mes = 0;
+            while (mes <= 10)
             {
                 string input = Console.ReadLine();
                 if (input == "1")
                 {
                     break;
                 }
-                Bitmon bi = Dorvalo1;
-                Console.Write("\nantes: [{0},{1}]", bi.Posicion[0], bi.Posicion[1]);
-                bi.Mover(mapa1);
-                Console.Write(", despues: [{0},{1}]\n\n   ", bi.Posicion[0], bi.Posicion[1]);
+                foreach (var bitmon in mapa1.Bitmons)
+                {
+                    bitmon.Mover(mapa1);
+                }
+                //Bitmon bi = Dorvalo1;
+                //Console.Write("\nantes: [{0},{1}]", bi.Posicion[0], bi.Posicion[1]);
+                //bi.Mover(mapa1);
+                //Console.Write(", despues: [{0},{1}]\n\n   ", bi.Posicion[0], bi.Posicion[1]);
 
                 for (int i = 0; i < mapa1.Ancho; i++)
                 {
@@ -461,6 +466,7 @@ namespace ConsoleApp14
                     Console.Write(" __ ");
                 }
                 Console.WriteLine("");
+                mes += 1;
             }
         }
     }
