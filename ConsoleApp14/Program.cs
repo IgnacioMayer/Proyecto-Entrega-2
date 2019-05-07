@@ -425,7 +425,6 @@ namespace ConsoleApp14
                         else
                         {
                             Console.Write("|   ");
-
                         }
                     }
                     Console.Write("|\n");
@@ -437,25 +436,6 @@ namespace ConsoleApp14
                 }
                 Console.WriteLine("");
             }
-
-            /*
-            Console.WriteLine("vacios");
-            foreach (var espacios in mapa1.Espacios_vacios)
-            {
-                Console.Write("[" + espacios[0] + "," + espacios[1] + "] ");
-            }
-            Console.WriteLine("\ntiene 1");
-            foreach (var espacios in mapa1.Espacios_1)
-            {
-                Console.Write("[" + espacios[0] + "," + espacios[1] + "] ");
-            }
-            Console.WriteLine("\ntiene 2");
-            foreach (var espacios in mapa1.Espacios_2)
-            {
-                Console.Write("[" + espacios[0] + "," + espacios[1] + "] ");
-            }
-            Console.WriteLine("");
-            */
         }
     }
 }
