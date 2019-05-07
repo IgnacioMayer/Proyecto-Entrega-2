@@ -8,7 +8,6 @@ namespace ConsoleApp14
     {
         public List<Bitmon> Bitmons; // Lista de Bitmons
         public List<Bitmon> Bitmons_muertos; // lista de bitmons muertos
-        public List<Bitmon> Bitmons_creados; // lista de bitmons muertos
         public int Alto;
         public int Ancho;
         public List<int[]> Espacios_vacios;
@@ -19,7 +18,6 @@ namespace ConsoleApp14
         public Mapa()
         {
             this.Bitmons_muertos = new List<Bitmon>();
-            this.Bitmons_creados = new List<Bitmon>();
             this.Espacios_vacios = new List<int[]>();
             this.Espacios_1 = new List<int[]>();
             this.Espacios_2 = new List<int[]>();
@@ -46,7 +44,7 @@ namespace ConsoleApp14
             {
                 for (int j = 0; j < Ancho; j++)
                 {
-                    int[] pos = {i, j};
+                    int[] pos = { i, j };
                     bool hay_1_bitmon = false;
                     bool hay_2_bitmon = false;
                     foreach (var bitmon in Bitmons)
@@ -76,7 +74,7 @@ namespace ConsoleApp14
             Espacios_vacios = Espacios_v;
             Espacios_1 = Espacios1;
             Espacios_2 = Espacios2;
-           
+
         }
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
@@ -98,37 +96,31 @@ namespace ConsoleApp14
             {
                 bitmon = new Dorvalo(Espacios_vacios[numeroRan]);
                 Bitmons.Add(bitmon);
-                Bitmons_creados.Add(bitmon);
             }
             else if (padre_ganador == "Doit")
             {
                 bitmon = new Doti(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Ent")
             {
                 bitmon = new Ent(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Gofue")
             {
                 bitmon = new Gofue(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Taplan")
             {
                 bitmon = new Taplan(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
 
             else if (padre_ganador == "Wetar")
             {
                 bitmon = new Wetar(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
             Espacios_vacios.RemoveAt(numeroRan);
@@ -163,7 +155,7 @@ namespace ConsoleApp14
                                 Bitmons[c].Morir();
                                 Bitmons.Remove(Bitmons[c]);
                                 Bitmons_muertos.Add(Bitmons[c]);
-                                
+
                             }
 
                             else if ((Bitmons[d].PuntosdeVida <= 0) && (Bitmons[c].PuntosdeVida > 0))
@@ -187,8 +179,8 @@ namespace ConsoleApp14
                 }
             }
         }
-        
-        
+
+
         public void Show()
         {
             // Creo una Matriz con las celdas que contengan un terreno y un numero n de bitmons que se encuentren en una posicion
@@ -208,40 +200,16 @@ namespace ConsoleApp14
                     celdas[i, j] = celda;
                 }
             }
-            for (int i = 0; i < Alto; i++)
+            for (int f = 0; f < Alto; f++)
             {
-                for (int j = 0; j < Ancho; j++)
+                for (int c = 0; c < Ancho; c++)
                 {
-                    
-                    if (celdas[i,j].bitmons.Any())
-                    {
-                         if (celdas[i, j].bitmons.Count == 1)
-                        {
-                            celdas[i, j].bitmons[0].Show();
-                        }
-                        else if (celdas[i, j].bitmons.Count == 2)
-                        {
-                            if ((celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Taplan"))
-                            {
-                                celdas[i, j].terreno.GetTerreno();
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("+"+" ");
-                            }
-                            else if ((celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Dorvalo"))
-                            {
-                                celdas[i, j].terreno.GetTerreno();
-                                Console.ForegroundColor = ConsoleColor.Black;
-                                Console.WriteLine("+"+ " ");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        celdas[i, j].terreno.GetTerreno();
-                    }
+                    celdas[f, c].terreno.GetTerreno();
+                    Console.Write(1 + " ");
                 }
-                Console.WriteLine(" ");
+                Console.WriteLine();
             }
+            Console.ReadKey();
 
         }
     }
