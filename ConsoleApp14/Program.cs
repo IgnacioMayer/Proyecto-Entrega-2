@@ -366,7 +366,8 @@ namespace ConsoleApp14
                 {
                     bitmon.Mover(mapa1);
                 }
-                mapa1.Relaciones();
+                //mapa1.CrearBitmon(Gofue1, Doti1);
+                mapa1.Relaciones2();
                 //Bitmon bi = Dorvalo1;
                 //Console.Write("\nantes: [{0},{1}]", bi.Posicion[0], bi.Posicion[1]);
                 //bi.Mover(mapa1);
@@ -466,7 +467,7 @@ namespace ConsoleApp14
                 {
                     Console.Write(" __ ");
                 }
-                Console.WriteLine("");
+                Console.WriteLine("\n");
                 foreach (var bitmon in mapa1.Bitmons)
                 {
                     Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3} ",bitmon.Tipo, bitmon.Posicion[0],bitmon.Posicion[1],bitmon.PuntosdeVida);

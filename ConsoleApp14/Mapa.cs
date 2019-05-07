@@ -21,6 +21,7 @@ namespace ConsoleApp14
             this.Bitmons_muertos = new List<Bitmon>();
             this.Bitmons_creados = new List<Bitmon>();
             this.Espacios_vacios = new List<int[]>();
+            this.Bitmons = new List<Bitmon>();
             this.Espacios_1 = new List<int[]>();
             this.Espacios_2 = new List<int[]>();
         }
@@ -80,7 +81,15 @@ namespace ConsoleApp14
         }
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
-            float probabilidad = (papa.CantidadDereproducciones * 100) / (papa.CantidadDereproducciones + mama.CantidadDereproducciones);
+            float probabilidad;
+            try
+            {
+                probabilidad = (papa.CantidadDereproducciones * 100) / (papa.CantidadDereproducciones + mama.CantidadDereproducciones);
+            }
+            catch (Exception)
+            {
+                probabilidad = 50f;
+            }
             Random random = new Random();
             int numeroRan = random.Next(1, 101);
             string padre_ganador;
@@ -100,7 +109,7 @@ namespace ConsoleApp14
                 Bitmons.Add(bitmon);
                 Bitmons_creados.Add(bitmon);
             }
-            else if (padre_ganador == "Doit")
+            else if (padre_ganador == "Doti")
             {
                 bitmon = new Doti(Espacios_vacios[numeroRan]);
                 Bitmons_creados.Add(bitmon);
@@ -132,7 +141,22 @@ namespace ConsoleApp14
                 Bitmons.Add(bitmon);
             }
             Espacios_vacios.RemoveAt(numeroRan);
+            papa.CantidadDereproducciones++;
+            mama.CantidadDereproducciones++;
+            this.Actualizar_espacios();
         }
+        public void Relaciones2()
+        {
+            foreach (var pos in Espacios_2)
+            {
+                var bitmons2 = Bitmons.Where(emp => (emp.Posicion[0] == pos[0])&&(emp.Posicion[1]==pos[1])).ToList();
+                if ((bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Taplan"))
+                {
+                    CrearBitmon(bitmons2[0], bitmons2[1]);
+                }
+            }
+        }
+
 
         public void Relaciones()
         {
