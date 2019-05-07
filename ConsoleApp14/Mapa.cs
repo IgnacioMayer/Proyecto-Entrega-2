@@ -215,17 +215,22 @@ namespace ConsoleApp14
                         {
                             if ((celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Taplan"))
                             {
+                                celdas[i, j].terreno.GetTerreno();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("+");
+                                Console.WriteLine("+"+" ");
                             }
                             else if ((celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Dorvalo"))
                             {
+                                celdas[i, j].terreno.GetTerreno();
                                 Console.ForegroundColor = ConsoleColor.Black;
-                                Console.WriteLine("+");
+                                Console.WriteLine("+"+ " ");
                             }
                         }
                     }
-                    
+                    else
+                    {
+                        celdas[i, j].terreno.GetTerreno();
+                    }
                 }
                 Console.WriteLine(" ");
             }
