@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace ConsoleApp14
 {
     class Doti : Bitmon
@@ -17,19 +19,42 @@ namespace ConsoleApp14
         public override void Mover(Mapa mapa)
         {
             Random random = new Random();
-            int numero = random.Next(-1, 2);
-            while (Posicion[0] + numero > mapa.Alto)
+            List<int[]> lista = new List<int[]>();
+            for (int i = 0; i < mapa.Alto; i++)
             {
-                numero = random.Next(-1, 2);
+                for (int j = 0; j < mapa.Ancho; j++)
+                {
+                    int[] pos = { i, j };
+                    string tipo = mapa.Terrenos[i, j].tipo;
+                    if (pos[0] == Posicion[0] + 1 | pos[0] == Posicion[0] | pos[0] == Posicion[0] - 1)
+                    {
+                        if (pos[1] == Posicion[1] + 1 | pos[1] == Posicion[1] | pos[1] == Posicion[1] - 1)
+                        {
+                            if (tipo != "Acuatico")
+                            {
+                                bool hay_dos = false;
+                                foreach (var espacio in mapa.Espacios_2)
+                                {
+                                    if (espacio[0] == pos[0] && espacio[1] == pos[1])
+                                    {
+                                        hay_dos = true;
+                                    }
+                                }
+                                if (!hay_dos)
+                                {
+                                    lista.Add(pos);
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            Posicion[0] += numero;
-            numero = random.Next(-1, 2);
-            while (Posicion[1] + numero < 0)
+            if (lista.Count != 0)
             {
-                numero = random.Next(-1, 2);
+                int numero = random.Next(0, lista.Count);
+                Posicion = lista[numero];
+                mapa.Actualizar_espacios();
             }
-            Posicion[1] += numero;
-            mapa.Actualizar_espacios();
         }
         public override void Show()
         {

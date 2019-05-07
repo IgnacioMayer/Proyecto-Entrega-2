@@ -8,6 +8,7 @@ namespace ConsoleApp14
     {
         public List<Bitmon> Bitmons; // Lista de Bitmons
         public List<Bitmon> Bitmons_muertos; // lista de bitmons muertos
+        public List<Bitmon> Bitmons_creados; // lista de bitmons muertos
         public int Alto;
         public int Ancho;
         public List<int[]> Espacios_vacios;
@@ -18,6 +19,7 @@ namespace ConsoleApp14
         public Mapa()
         {
             this.Bitmons_muertos = new List<Bitmon>();
+            this.Bitmons_creados = new List<Bitmon>();
             this.Espacios_vacios = new List<int[]>();
             this.Espacios_1 = new List<int[]>();
             this.Espacios_2 = new List<int[]>();
@@ -96,31 +98,37 @@ namespace ConsoleApp14
             {
                 bitmon = new Dorvalo(Espacios_vacios[numeroRan]);
                 Bitmons.Add(bitmon);
+                Bitmons_creados.Add(bitmon);
             }
             else if (padre_ganador == "Doit")
             {
                 bitmon = new Doti(Espacios_vacios[numeroRan]);
+                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Ent")
             {
                 bitmon = new Ent(Espacios_vacios[numeroRan]);
+                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Gofue")
             {
                 bitmon = new Gofue(Espacios_vacios[numeroRan]);
+                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
             else if (padre_ganador == "Taplan")
             {
                 bitmon = new Taplan(Espacios_vacios[numeroRan]);
+                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
 
             else if (padre_ganador == "Wetar")
             {
                 bitmon = new Wetar(Espacios_vacios[numeroRan]);
+                Bitmons_creados.Add(bitmon);
                 Bitmons.Add(bitmon);
             }
             Espacios_vacios.RemoveAt(numeroRan);
