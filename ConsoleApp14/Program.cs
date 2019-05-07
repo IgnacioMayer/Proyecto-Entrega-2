@@ -16,8 +16,8 @@ namespace ConsoleApp14
             Terreno Nieve = new Terreno("NieveIce");
             Terreno Volcán = new Terreno("Volcanic");
 
-            /*
-            Console.WriteLine("-=Bienvenido a Bitmonlandia=-\nTerrenos:\nVegetación");
+           
+            Console.WriteLine("-=Bienvenido a Bitmonlandia=-");
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(" ");
             Console.BackgroundColor = ConsoleColor.Black;
@@ -49,7 +49,7 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Dorvalo\n-\nDoti");
+            Console.WriteLine("Dorvalo");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
@@ -57,8 +57,8 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("-");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Seleccione configuración inicial.\nOpción 1:");
-            */
+            Console.WriteLine("Seleccione configuración inicial");
+            
             // Creamos la matriz de terrenos predefinida
             Terreno[,] opcion1 = new Terreno[10, 10];
             opcion1[0, 0] = Desierto;
@@ -251,24 +251,7 @@ namespace ConsoleApp14
             mapa1.Ancho = 10;
             mapa1.Terrenos = opcion1;
             mapa1.Bitmons = bitmons1;
-            mapa1.Actualizar_espacios();
-            mapa1.CrearMapa();
-            Console.WriteLine("vacios");
-            foreach(var espacios in mapa1.Espacios_vacios)
-            {
-                Console.Write("["+espacios[0]+","+ espacios[1]+"] ");
-            }
-            Console.WriteLine("\ntiene 1");
-            foreach(var espacios in mapa1.Espacios_1)
-            {
-                Console.Write("[" + espacios[0] + "," + espacios[1] + "] ");
-            }
-            Console.WriteLine("\ntiene 2");
-            foreach(var espacios in mapa1.Espacios_2)
-            {
-                Console.Write("[" + espacios[0] + "," + espacios[1] + "] ");
-            }
-
+            mapa1.Show();
             /*
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;

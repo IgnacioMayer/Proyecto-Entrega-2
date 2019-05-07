@@ -204,24 +204,28 @@ namespace ConsoleApp14
             {
                 for (int j = 0; j < Ancho; j++)
                 {
-                    celdas[i, j].terreno.GetTerreno();
-                    if (celdas[i,j].bitmons.Count == 1)
+                    
+                    if (celdas[i,j].bitmons.Any())
                     {
-                        celdas[i, j].bitmons[0].Show();
-                    }
-                    else if (celdas[i,j].bitmons.Count == 2)
-                    {
-                        if ((celdas[i,j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Taplan"))
+                         if (celdas[i, j].bitmons.Count == 1)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("+");
+                            celdas[i, j].bitmons[0].Show();
                         }
-                        else if ((celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Dorvalo"))
+                        else if (celdas[i, j].bitmons.Count == 2)
                         {
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            Console.WriteLine("+");
+                            if ((celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[0].Tipo == "Doti" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Doti") || (celdas[i, j].bitmons[1].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Taplan"))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("+");
+                            }
+                            else if ((celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Ent" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Ent") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Gofue" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Gofue") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Wetar") || (celdas[i, j].bitmons[0].Tipo == "Wetar" && celdas[i, j].bitmons[1].Tipo == "Dorvalo") || (celdas[i, j].bitmons[0].Tipo == "Dorvalo" && celdas[i, j].bitmons[1].Tipo == "Taplan") || (celdas[i, j].bitmons[0].Tipo == "Taplan" && celdas[i, j].bitmons[1].Tipo == "Dorvalo"))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.WriteLine("+");
+                            }
                         }
                     }
+                    
                 }
                 Console.WriteLine(" ");
             }

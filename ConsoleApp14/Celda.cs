@@ -10,6 +10,10 @@ namespace ConsoleApp14
     {
         public Terreno terreno;
         public List<Bitmon> bitmons;
-
+        public Celda()
+        {
+            this.bitmons = new List<Bitmon>();
+        }
+        
     }
 }
