@@ -18,13 +18,13 @@ namespace ConsoleApp14
         {
             Random random = new Random();
             int numero = random.Next(-1, 2);
-            while (Posicion[0] + numero > mapa.Alto)
+            while (Posicion[0] + numero > mapa.Alto -1 | Posicion[0] + numero < 0)
             {
                 numero = random.Next(-1, 2);
             }
             Posicion[0] += numero;
             numero = random.Next(-1, 2);
-            while (Posicion[1] + numero < 0)
+            while (Posicion[1] + numero > mapa.Alto - 1 | Posicion[1] + numero < 0)
             {
                 numero = random.Next(-1, 2);
             }
