@@ -26,7 +26,7 @@ namespace ConsoleApp14
                     int[] pos = { i, j };
                     if (pos[0] == Posicion[0] + 2 | pos[0] == Posicion[0] + 1 | pos[0] == Posicion[0] | pos[0] == Posicion[0] - 1 | pos[0] == Posicion[0] - 2)
                     {
-                        if ((pos[1] == Posicion[1] + 2 | pos[1] == Posicion[1] + 1 | pos[1] == Posicion[1] | pos[1] == Posicion[1] - 1 | pos[1] == Posicion[1] - 2)
+                        if (pos[1] == Posicion[1] + 2 | pos[1] == Posicion[1] + 1 | pos[1] == Posicion[1] | pos[1] == Posicion[1] - 1 | pos[1] == Posicion[1] - 2)
                         {
                             bool hay_dos = false;
                             foreach (var espacio in mapa.Espacios_2)
