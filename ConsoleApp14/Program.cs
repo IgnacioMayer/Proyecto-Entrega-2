@@ -360,7 +360,7 @@ namespace ConsoleApp14
             while (mes <= 30 && !mapa1.sobrepoblacion)
             {
 
-                Console.WriteLine("\n                                              Mes: {0}",mes);
+                Console.WriteLine("\n\n                                              Mes: {0}",mes);
                 /*
                 string input = Console.ReadLine();
                 if (input == "1")
@@ -490,7 +490,7 @@ namespace ConsoleApp14
                 Console.WriteLine("\n");
                 for (int i = 0; i < mapa1.Bitmons.Count; i++)
                 {
-                    Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3}", mapa1.Bitmons[i].Tipo, mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1], mapa1.Bitmons[i].PuntosdeVida);
+                    Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3}, vivo: {4}", mapa1.Bitmons[i].Tipo, mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1], mapa1.Bitmons[i].PuntosdeVida, mapa1.Bitmons[i].vivo);
                 }
                 Console.WriteLine("");
                 foreach (var bitmon in mapa1.Bitmons_creados)
