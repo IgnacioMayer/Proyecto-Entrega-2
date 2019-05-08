@@ -252,7 +252,7 @@ namespace ConsoleApp14
             mapa1.Ancho = 10;
             mapa1.Terrenos = opcion1;
             mapa1.Bitmons = bitmons1;
-            mapa1.Show();
+            
             /*
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
@@ -353,6 +353,9 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
             */
+            float numero_muertos = 0;
+            float numero_creados = 0;
+
             int[] posENT = {0, 0};
             Ent papa = new Ent(posENT);
             Ent mama = new Ent(posENT);
@@ -375,6 +378,7 @@ namespace ConsoleApp14
                     {
                         mapa1.Bitmons.Remove(mapa1.Bitmons[i]);
                         mapa1.Bitmons_muertos.Add(mapa1.Bitmons[i]);
+                        mapa1.bitmons_muertos_mes.Add(mapa1.Bitmons[i]);
                     }
                 }
                 if (mes%3 == 0)
@@ -508,6 +512,8 @@ namespace ConsoleApp14
                 {
                     Console.WriteLine("sobrepoblacion");
                 }
+                numero_muertos += mapa1.bitmons_muertos_mes.Count*1000/mapa1.Bitmons.Count;
+                numero_creados += mapa1.bitmons_creado_mes.Count*1000/mapa1.Bitmons.Count;
             }
             float promedio_vida = 0;
             foreach (var bitmon in mapa1.Bitmons_muertos)

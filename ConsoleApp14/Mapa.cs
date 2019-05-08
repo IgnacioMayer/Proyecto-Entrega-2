@@ -16,7 +16,8 @@ namespace ConsoleApp14
         public List<int[]> Espacios_1;
         public List<int[]> Espacios_2;
         public Terreno[,] Terrenos; // Matriz con Terrenos
-
+        public List<Bitmon> bitmons_creado_mes;
+        public List<Bitmon> bitmons_muertos_mes;
         public Mapa()
         {
             this.Bitmons_muertos = new List<Bitmon>();
@@ -84,6 +85,7 @@ namespace ConsoleApp14
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
             List<int[]> espacios_disponibles = new List<int[]>();
+            bitmons_creado_mes = new List<Bitmon>();
             float probabilidad;
             try
             {
@@ -135,6 +137,7 @@ namespace ConsoleApp14
                     numeroRan = random.Next(0, espacios_disponibles.Count);
                     bitmon = new Wetar(espacios_disponibles[numeroRan]);
                     Bitmons_creados.Add(bitmon);
+                    bitmons_creado_mes.Add(bitmon);
                     Bitmons.Add(bitmon);
                 }
                 else
@@ -175,30 +178,35 @@ namespace ConsoleApp14
                         bitmon = new Dorvalo(espacios_disponibles[numeroRan]);
                         Bitmons.Add(bitmon);
                         Bitmons_creados.Add(bitmon);
+                        bitmons_creado_mes.Add(bitmon);
                     }
                     else if (padre_ganador == "Doti")
                     {
                         bitmon = new Doti(espacios_disponibles[numeroRan]);
                         Bitmons_creados.Add(bitmon);
                         Bitmons.Add(bitmon);
+                        bitmons_creado_mes.Add(bitmon);
                     }
                     else if (padre_ganador == "Ent")
                     {
                         bitmon = new Ent(espacios_disponibles[numeroRan]);
                         Bitmons_creados.Add(bitmon);
                         Bitmons.Add(bitmon);
+                        bitmons_creado_mes.Add(bitmon);
                     }
                     else if (padre_ganador == "Gofue")
                     {
                         bitmon = new Gofue(espacios_disponibles[numeroRan]);
                         Bitmons_creados.Add(bitmon);
                         Bitmons.Add(bitmon);
+                        bitmons_creado_mes.Add(bitmon);
                     }
                     else if (padre_ganador == "Taplan")
                     {
                         bitmon = new Taplan(espacios_disponibles[numeroRan]);
                         Bitmons_creados.Add(bitmon);
                         Bitmons.Add(bitmon);
+                        bitmons_creado_mes.Add(bitmon);
                     }
                 }
                 else
@@ -213,13 +221,17 @@ namespace ConsoleApp14
 
         public void Relaciones()
         {
+            bitmons_muertos_mes = new List<Bitmon>();
             foreach (var pos in Espacios_2)
             {
+                //Apareamiento
                 var bitmons2 = Bitmons.Where(emp => (emp.Posicion[0] == pos[0])&&(emp.Posicion[1]==pos[1])).ToList();
                 if ((bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Taplan"))
                 {
                     CrearBitmon(bitmons2[0], bitmons2[1]);
                 }
+                //Pelea
+                
                 else if ((bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Dorvalo"))//los que pelean
                 {
                     float a = bitmons2[0].Multiplicador * bitmons2[1].PuntosdeAtaque;
@@ -233,7 +245,7 @@ namespace ConsoleApp14
                         bitmons2[0].Morir();
                         Bitmons.Remove(bitmons2[0]);
                         Bitmons_muertos.Add(bitmons2[0]);
-
+                        bitmons_muertos_mes.Add(bitmons2[0]);
                     }
 
                     else if ((bitmons2[1].PuntosdeVida <= 0) && (bitmons2[0].PuntosdeVida > 0))
@@ -242,6 +254,7 @@ namespace ConsoleApp14
                         bitmons2[1].Morir();
                         Bitmons.Remove(bitmons2[1]);
                         Bitmons_muertos.Add(bitmons2[1]);
+                        bitmons_muertos_mes.Add(bitmons2[1]);
                     }
                     else if ((bitmons2[1].PuntosdeVida <= 0) && (bitmons2[0].PuntosdeVida <= 0))
                     {
@@ -251,41 +264,11 @@ namespace ConsoleApp14
                         Bitmons_muertos.Add(bitmons2[0]);
                         Bitmons.Remove(bitmons2[1]);
                         Bitmons_muertos.Add(bitmons2[1]);
+                        bitmons_muertos_mes.Add(bitmons2[0]);
+                        bitmons_muertos_mes.Add(bitmons2[1]);
                     }
                 }
             }
-        }
-
-        public void Show()
-        {
-            // Creo una Matriz con las celdas que contengan un terreno y un numero n de bitmons que se encuentren en una posicion
-            Celda[,] celdas = new Celda[Alto, Ancho];
-            for (int i = 0; i < Alto; i++)
-            {
-                for (int j = 0; j < Ancho; j++)
-                {
-                    int[] posicion_actual = { i, j };
-                    Celda celda = new Celda();
-                    celda.terreno = Terrenos[i, j];
-                    var bitmon = Bitmons.Where(emp => emp.Posicion == posicion_actual);
-                    foreach (var emp in bitmon)
-                    {
-                        celda.bitmons.Add(emp);
-                    }
-                    celdas[i, j] = celda;
-                }
-            }
-            for (int f = 0; f < Alto; f++)
-            {
-                for (int c = 0; c < Ancho; c++)
-                {
-                    celdas[f, c].terreno.GetTerreno();
-                    Console.Write(1 + " ");
-                }
-                Console.WriteLine();
-            }
-            Console.ReadKey();
-
-        }
+        }  
     }
 }
