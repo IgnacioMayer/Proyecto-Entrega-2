@@ -529,10 +529,7 @@ namespace ConsoleApp14
                 }
                 mes++;
             }
-            foreach (var bit in mapa1.Bitmons_creados)
-            {
-                Console.WriteLine(bit.Tipo);
-            }
+   
             Console.WriteLine();
             float promedio_vida = 0;
             foreach (var bitmon in mapa1.Bitmons_muertos)
@@ -544,7 +541,7 @@ namespace ConsoleApp14
                 promedio_vida += bitmon.TiempoVivido;
             }
             promedio_vida = promedio_vida*10 / (mapa1.Bitmons_muertos.Count + mapa1.Bitmons.Count);
-            Console.WriteLine("\nEl promedio de vida de los bitmons fue de {0} meses.\n",(float)((int)promedio_vida)/10);
+            Console.WriteLine("El promedio de vida de los bitmons fue de {0} meses.\n",(float)((int)promedio_vida)/10);
 
             foreach (var tipo in tipo_bitmons)
             {
@@ -566,19 +563,37 @@ namespace ConsoleApp14
             numero_muertos = numero_muertos / mes;
             for (int i = 0; i < 6; i++)
             {
-                numero_creados[i] = numero_creados[i] *10 / mes;
+                numero_creados[i] = numero_creados[i] / mes;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                Console.WriteLine(numero_creados[i]);
-            }
+
             int k = 0;
             foreach (var tipo1 in tipo_bitmons)
             {
-                Console.WriteLine("La tasa bruta de natalidad de los {0} fue de {1} º/ºº", tipo1, (float)((int)numero_creados[k]) / 10);
+                Console.WriteLine("La tasa bruta de natalidad de los {0} fue de {1} º/ºº", tipo1, Math.Round(numero_creados[k],2));
                 k++;
             }
             Console.WriteLine("La tasa bruta de mortalidad de los Bitmons fue de {0} º/ºº", numero_muertos);
+            Console.WriteLine("");
+            foreach (var tipo in tipo_bitmons)
+            {
+                var bitmons = mapa1.Bitmons_creados.Where(x => x.Tipo == tipo).ToList();
+                Console.WriteLine("La cantidad de hijos en promedio de los {0} fue de {1} hijos por mes", tipo, Math.Round((float)bitmons.Count/mes,2));
+            }
+            Console.WriteLine("");
+            foreach (var tipo in tipo_bitmons)
+            {
+                var bitmons = mapa1.Bitmons.Where(x => x.Tipo == tipo).ToList();
+                if (bitmons.Count == 0)
+                {
+                    Console.WriteLine("La especie {0} se extinguio", tipo);
+                }
+            }
+            Console.WriteLine(mapa1.Bitmons_muertos.Count);
+            foreach (var tipo in tipo_bitmons)
+            {
+                var bitmons = mapa1.Bitmons_muertos.Where(x => x.Tipo == tipo).ToList();
+                Console.WriteLine("Hay {0} {1} en el Bithalla",bitmons.Count ,tipo);
+            }
         }
     }
 }
