@@ -491,10 +491,7 @@ namespace ConsoleApp14
                 for (int i = 0; i < mapa1.Bitmons.Count; i++)
                 {
                     Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3}", mapa1.Bitmons[i].Tipo, mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1], mapa1.Bitmons[i].PuntosdeVida);
-                    if (!mapa1.Bitmons[i].vivo)
-                    {
-                        Console.WriteLine("    ---------------->    STE WNNN ESTA MUERTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  <------------------------------");
-                    }
+                   
                 }
                 Console.WriteLine("");
                 foreach (var bitmon in mapa1.Bitmons_creados)
