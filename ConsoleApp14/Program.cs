@@ -357,8 +357,9 @@ namespace ConsoleApp14
             int mes = 0;
             while (mes < 30 && !mapa1.sobrepoblacion)
             {
-                /*
+
                 Console.WriteLine("\n                                              Mes: {0}",mes+1);
+                /*
                 string input = Console.ReadLine();
                 if (input == "1")
                 {
