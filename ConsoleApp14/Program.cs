@@ -20,7 +20,7 @@ namespace ConsoleApp14
             int cantidad_mese = 30;
             Console.WriteLine("Elija una configuracion de Mapa:\n[1] Mapa 1\n[2] Mapa 2\n[3] Mapa 3");
             string tipo_mapa = Console.ReadLine();
-            while (tipo_mapa != "1" | tipo_mapa != "2" | tipo_mapa != "3")
+            while (tipo_mapa != "1" && tipo_mapa != "2" && tipo_mapa != "3")
             {
                 Console.WriteLine("Elija una opción correcta");
                 tipo_mapa = Console.ReadLine();
