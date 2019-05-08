@@ -41,8 +41,6 @@ namespace ConsoleApp14
                 }
             }
 
-
-            Console.WriteLine();
             // Creamos la matriz de terrenos predefinida
             Terreno[,] opcion1 = new Terreno[10, 10];
             opcion1[0, 0] = Desierto;
@@ -570,8 +568,16 @@ namespace ConsoleApp14
             Console.WriteLine("");
             foreach (var tipo in tipo_bitmons)
             {
-                var bitmons = mapa1.Bitmons_muertos.Where(x => x.Tipo == tipo).ToList();
-                Console.WriteLine("Hay {0} {1} en el Bithalla. Corresponden al {2} % ",bitmons.Count ,tipo, Math.Round((float)(bitmons.Count*100) / mapa1.Bitmons_muertos.Count,1));
+                if (mapa1.Bitmons_muertos.Count != 0)
+                {
+                    var bitmons = mapa1.Bitmons_muertos.Where(x => x.Tipo == tipo).ToList();
+                    Console.WriteLine("Hay {0} {1} en el Bithalla. Corresponden al {2} % ", bitmons.Count, tipo, Math.Round((float)(bitmons.Count * 100) / mapa1.Bitmons_muertos.Count, 1));
+                }
+                else
+                {
+                    Console.WriteLine("No hay ningun bitmon muerto.");
+                }
+
             }
         }
     }
