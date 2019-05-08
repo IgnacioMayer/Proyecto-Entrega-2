@@ -6,6 +6,7 @@ namespace ConsoleApp14
 {
     public class Mapa
     {
+        public bool sobrepoblacion = false;
         public List<Bitmon> Bitmons; // Lista de Bitmons
         public List<Bitmon> Bitmons_muertos; // lista de bitmons muertos
         public List<Bitmon> Bitmons_creados;
@@ -81,6 +82,12 @@ namespace ConsoleApp14
         }
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
+            List<int[]> espacios_disponibles = new List<int[]>();
+            espacios_disponibles = Espacios_vacios;
+            foreach (var espacio in Espacios_1)
+            {
+                espacios_disponibles.Add(espacio);
+            }
             float probabilidad;
             try
             {
@@ -101,51 +108,58 @@ namespace ConsoleApp14
             {
                 padre_ganador = mama.Tipo;
             }
-            numeroRan = random.Next(0, Espacios_vacios.Count);
-            Bitmon bitmon;
-            if (padre_ganador == "Dorvalo")
+            if (espacios_disponibles.Count > 0)
             {
-                bitmon = new Dorvalo(Espacios_vacios[numeroRan]);
-                Bitmons.Add(bitmon);
-                Bitmons_creados.Add(bitmon);
-            }
-            else if (padre_ganador == "Doti")
-            {
-                bitmon = new Doti(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
-                Bitmons.Add(bitmon);
-            }
-            else if (padre_ganador == "Ent")
-            {
-                bitmon = new Ent(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
-                Bitmons.Add(bitmon);
-            }
-            else if (padre_ganador == "Gofue")
-            {
-                bitmon = new Gofue(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
-                Bitmons.Add(bitmon);
-            }
-            else if (padre_ganador == "Taplan")
-            {
-                bitmon = new Taplan(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
-                Bitmons.Add(bitmon);
-            }
+                numeroRan = random.Next(0, espacios_disponibles.Count);
+                Bitmon bitmon;
 
-            else if (padre_ganador == "Wetar")
-            {
-                bitmon = new Wetar(Espacios_vacios[numeroRan]);
-                Bitmons_creados.Add(bitmon);
-                Bitmons.Add(bitmon);
+                if (padre_ganador == "Dorvalo")
+                {
+                    bitmon = new Dorvalo(Espacios_vacios[numeroRan]);
+                    Bitmons.Add(bitmon);
+                    Bitmons_creados.Add(bitmon);
+                }
+                else if (padre_ganador == "Doti")
+                {
+                    bitmon = new Doti(Espacios_vacios[numeroRan]);
+                    Bitmons_creados.Add(bitmon);
+                    Bitmons.Add(bitmon);
+                }
+                else if (padre_ganador == "Ent")
+                {
+                    bitmon = new Ent(Espacios_vacios[numeroRan]);
+                    Bitmons_creados.Add(bitmon);
+                    Bitmons.Add(bitmon);
+                }
+                else if (padre_ganador == "Gofue")
+                {
+                    bitmon = new Gofue(Espacios_vacios[numeroRan]);
+                    Bitmons_creados.Add(bitmon);
+                    Bitmons.Add(bitmon);
+                }
+                else if (padre_ganador == "Taplan")
+                {
+                    bitmon = new Taplan(Espacios_vacios[numeroRan]);
+                    Bitmons_creados.Add(bitmon);
+                    Bitmons.Add(bitmon);
+                }
+
+                else if (padre_ganador == "Wetar")
+                {
+                    bitmon = new Wetar(Espacios_vacios[numeroRan]);
+                    Bitmons_creados.Add(bitmon);
+                    Bitmons.Add(bitmon);
+                }
+                papa.CantidadDereproducciones++;
+                mama.CantidadDereproducciones++;
+                this.Actualizar_espacios();
             }
-            Espacios_vacios.RemoveAt(numeroRan);
-            papa.CantidadDereproducciones++;
-            mama.CantidadDereproducciones++;
-            this.Actualizar_espacios();
+            else
+            {
+                sobrepoblacion = true;
+            }
         }
-        public void Relaciones2()
+        public void Relaciones()
         {
             foreach (var pos in Espacios_2)
             {
@@ -154,65 +168,41 @@ namespace ConsoleApp14
                 {
                     CrearBitmon(bitmons2[0], bitmons2[1]);
                 }
-            }
-        }
-
-
-        public void Relaciones()
-        {
-            for (int c = 0; c < Bitmons.Count; c++)
-            {
-                for (int d = c; d < c; d++)
+                else if ((bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Dorvalo"))//los que pelean
                 {
-                    if (Bitmons[c].Posicion == Bitmons[d].Posicion)// si dos bitmons se encuentran en un mismo lugar
+                    float a = bitmons2[0].Multiplicador * bitmons2[1].PuntosdeAtaque;
+                    float b = bitmons2[1].Multiplicador * bitmons2[0].PuntosdeAtaque;
+                    bitmons2[0].PuntosdeVida -= a;
+                    bitmons2[1].PuntosdeVida -= b;
+
+                    if ((bitmons2[0].PuntosdeVida <= 0) && (bitmons2[1].PuntosdeVida > 0))
                     {
-                        //relaciones que se forman entre bitmons.
+                        bitmons2[1].PuntosdeVida += b;//SEGUN ENUNCIADO SI UN BITMON MATA A OTRO RECUPERA LOS PUNTOS DE VIDA
+                        bitmons2[0].Morir();
+                        Bitmons.Remove(bitmons2[0]);
+                        Bitmons_muertos.Add(bitmons2[0]);
 
-                        // LOS BITMONS QUE SE REPRODUCEN
-                        if ((Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Doti" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Doti") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Taplan"))
-                        {
-                            CrearBitmon(Bitmons[c], Bitmons[d]);
-                        }
-                        // LAS PELEAS
-                        else if ((Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Ent" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Ent") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Gofue" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Gofue") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Wetar") || (Bitmons[c].Tipo == "Wetar" && Bitmons[d].Tipo == "Dorvalo") || (Bitmons[c].Tipo == "Dorvalo" && Bitmons[d].Tipo == "Taplan") || (Bitmons[c].Tipo == "Taplan" && Bitmons[d].Tipo == "Dorvalo"))//los que pelean
-                        {
-                            int a = (int)Bitmons[c].Multiplicador * Bitmons[d].PuntosdeAtaque;
-                            int b = (int)Bitmons[c].Multiplicador * Bitmons[d].PuntosdeAtaque;
-                            Bitmons[c].PuntosdeVida -= a;
-                            Bitmons[d].PuntosdeVida -= b;
+                    }
 
-                            if ((Bitmons[c].PuntosdeVida <= 0) && (Bitmons[d].PuntosdeVida > 0))
-                            {
-                                Bitmons[d].PuntosdeVida += b;//SEGUN ENUNCIADO SI UN BITMON MATA A OTRO RECUPERA LOS PUNTOS DE VIDA
-                                Bitmons[c].Morir();
-                                Bitmons.Remove(Bitmons[c]);
-                                Bitmons_muertos.Add(Bitmons[c]);
-
-                            }
-
-                            else if ((Bitmons[d].PuntosdeVida <= 0) && (Bitmons[c].PuntosdeVida > 0))
-                            {
-                                Bitmons[c].PuntosdeVida += a;//SEGUN ENUNCIADO SI UN BITMON MATA A OTRO RECUPERA LOS PUNTOS DE VIDA
-                                Bitmons[d].Morir();
-                                Bitmons.Remove(Bitmons[d]);
-                                Bitmons_muertos.Add(Bitmons[d]);
-                            }
-                            else if ((Bitmons[d].PuntosdeVida <= 0) && (Bitmons[c].PuntosdeVida <= 0))
-                            {
-                                Bitmons[c].Morir();
-                                Bitmons[d].Morir();
-                                Bitmons.Remove(Bitmons[c]);
-                                Bitmons_muertos.Add(Bitmons[c]);
-                                Bitmons.Remove(Bitmons[d]);
-                                Bitmons_muertos.Add(Bitmons[d]);
-                            }
-                        }
+                    else if ((bitmons2[1].PuntosdeVida <= 0) && (bitmons2[0].PuntosdeVida > 0))
+                    {
+                        bitmons2[0].PuntosdeVida += a;//SEGUN ENUNCIADO SI UN BITMON MATA A OTRO RECUPERA LOS PUNTOS DE VIDA
+                        bitmons2[1].Morir();
+                        Bitmons.Remove(bitmons2[1]);
+                        Bitmons_muertos.Add(bitmons2[1]);
+                    }
+                    else if ((bitmons2[1].PuntosdeVida <= 0) && (bitmons2[0].PuntosdeVida <= 0))
+                    {
+                        bitmons2[0].Morir();
+                        bitmons2[1].Morir();
+                        Bitmons.Remove(bitmons2[0]);
+                        Bitmons_muertos.Add(bitmons2[0]);
+                        Bitmons.Remove(bitmons2[1]);
+                        Bitmons_muertos.Add(bitmons2[1]);
                     }
                 }
             }
         }
-
-
         public void Show()
         {
             // Creo una Matriz con las celdas que contengan un terreno y un numero n de bitmons que se encuentren en una posicion

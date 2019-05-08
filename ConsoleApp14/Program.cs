@@ -191,9 +191,9 @@ namespace ConsoleApp14
             //Poblacion inicial de Wetar
             int[] pos10 = { 0, 5 };
             Wetar Wetar1 = new Wetar(pos10);
-            int[] pos11 = { 2, 3 };
+            int[] pos11 = { 0, 1 };
             Wetar Wetar2 = new Wetar(pos11);
-            int[] pos12 = { 2, 6 };
+            int[] pos12 = { 9, 0 };
             Wetar Wetar3 = new Wetar(pos12);
 
             //Poblacion inicial de Gofue
@@ -355,8 +355,9 @@ namespace ConsoleApp14
             */
 
             int mes = 0;
-            while (mes <= 10)
+            while (mes < 30 && !mapa1.sobrepoblacion)
             {
+                Console.WriteLine("\n                                              Mes: {0}",mes+1);
                 string input = Console.ReadLine();
                 if (input == "1")
                 {
@@ -367,7 +368,7 @@ namespace ConsoleApp14
                     bitmon.Mover(mapa1);
                 }
                 //mapa1.CrearBitmon(Gofue1, Doti1);
-                mapa1.Relaciones2();
+                mapa1.Relaciones();
                 //Bitmon bi = Dorvalo1;
                 //Console.Write("\nantes: [{0},{1}]", bi.Posicion[0], bi.Posicion[1]);
                 //bi.Mover(mapa1);
@@ -471,13 +472,33 @@ namespace ConsoleApp14
                 foreach (var bitmon in mapa1.Bitmons)
                 {
                     Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3} ",bitmon.Tipo, bitmon.Posicion[0],bitmon.Posicion[1],bitmon.PuntosdeVida);
+                    bitmon.Envejecer();
                 }
                 foreach (var bitmon in mapa1.Bitmons_creados)
                 {
                     Console.WriteLine("se creo {0} -> [{1},{2}]", bitmon.Tipo, bitmon.Posicion[0], bitmon.Posicion[1]);
                 }
+                foreach (var bitmon in mapa1.Bitmons_muertos)
+                {
+                    Console.WriteLine("se murio {0} -> [{1},{2}]", bitmon.Tipo, bitmon.Posicion[0], bitmon.Posicion[1]);
+                }
                 mes += 1;
+                if (mapa1.sobrepoblacion)
+                {
+                    Console.WriteLine("sobrepoblacion");
+                }
             }
+            float promedio_vida = 0;
+            foreach (var bitmon in mapa1.Bitmons_muertos)
+            {
+                promedio_vida += bitmon.TiempoVida;
+            }
+            foreach (var bitmon in mapa1.Bitmons)
+            {
+                promedio_vida += bitmon.TiempoVida;
+            }
+            promedio_vida = promedio_vida*10 / (mapa1.Bitmons_muertos.Count + mapa1.Bitmons.Count);
+            Console.WriteLine("El promedio de vida de los bitmons fue de {0} meses.",(float)((int)promedio_vida)/10);
         }
     }
 }

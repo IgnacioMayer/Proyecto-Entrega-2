@@ -6,7 +6,7 @@ namespace ConsoleApp14
         public string Tipo;
         public int TiempoVida;
         public float Multiplicador;
-        public int PuntosdeVida;
+        public float PuntosdeVida;
         public int PuntosdeAtaque;
         public int CantidadDereproducciones = 0;
         public bool vivo = true;
