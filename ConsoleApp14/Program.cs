@@ -469,10 +469,15 @@ namespace ConsoleApp14
                     Console.Write(" __ ");
                 }
                 Console.WriteLine("\n");
-                foreach (var bitmon in mapa1.Bitmons)
+                for (int i = 0; i < mapa1.Bitmons.Count; i++)
                 {
-                    Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3} ",bitmon.Tipo, bitmon.Posicion[0],bitmon.Posicion[1],bitmon.PuntosdeVida);
-                    bitmon.Envejecer();
+                    Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3} ", mapa1.Bitmons[i].Tipo, mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1], mapa1.Bitmons[i].PuntosdeVida);
+                    mapa1.Bitmons[i].Envejecer();
+                    if (!mapa1.Bitmons[i].vivo)
+                    {
+                        mapa1.Bitmons.Remove(mapa1.Bitmons[i]);
+                        mapa1.Bitmons_muertos.Add(mapa1.Bitmons[i]);
+                    }
                 }
                 foreach (var bitmon in mapa1.Bitmons_creados)
                 {
@@ -491,14 +496,37 @@ namespace ConsoleApp14
             float promedio_vida = 0;
             foreach (var bitmon in mapa1.Bitmons_muertos)
             {
-                promedio_vida += bitmon.TiempoVida;
+                promedio_vida += bitmon.TiempoVivido;
             }
             foreach (var bitmon in mapa1.Bitmons)
             {
-                promedio_vida += bitmon.TiempoVida;
+                promedio_vida += bitmon.TiempoVivido;
             }
             promedio_vida = promedio_vida*10 / (mapa1.Bitmons_muertos.Count + mapa1.Bitmons.Count);
-            Console.WriteLine("El promedio de vida de los bitmons fue de {0} meses.",(float)((int)promedio_vida)/10);
+            Console.WriteLine("\nEl promedio de vida de los bitmons fue de {0} meses.",(float)((int)promedio_vida)/10);
+            List<string> tipo_bitmons = new List<string>();
+            tipo_bitmons.Add("Taplan");
+            tipo_bitmons.Add("Doti");
+            tipo_bitmons.Add("Wetar");
+            tipo_bitmons.Add("Dorvalo");
+            tipo_bitmons.Add("Gofue");
+            tipo_bitmons.Add("Ent");
+            foreach (var tipo in tipo_bitmons)
+            {
+                promedio_vida = 0;
+                var bitmons = mapa1.Bitmons.Where(x => x.Tipo == tipo).ToList();
+                var bitmons_m = mapa1.Bitmons_muertos.Where(x => x.Tipo == tipo).ToList();
+                foreach (var bit in bitmons)
+                {
+                    promedio_vida += bit.TiempoVivido;
+                }
+                foreach (var bit in bitmons_m)
+                {
+                    promedio_vida += bit.TiempoVivido;
+                }
+                promedio_vida = promedio_vida * 10 / (bitmons.Count + bitmons_m.Count);
+                Console.WriteLine("\nEl promedio de vida de los {0} fue de {1} meses",tipo, (float)((int)promedio_vida) / 10);
+            }
         }
     }
 }

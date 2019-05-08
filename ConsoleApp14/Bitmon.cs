@@ -5,6 +5,7 @@ namespace ConsoleApp14
     {
         public string Tipo;
         public int TiempoVida;
+        public int TiempoVivido = 0;
         public float Multiplicador;
         public float PuntosdeVida;
         public int PuntosdeAtaque;
@@ -24,6 +25,7 @@ namespace ConsoleApp14
         public void Envejecer()
         {
             TiempoVida -= 1;
+            TiempoVivido += 1;
             if (TiempoVida <= 0)
             {
                 vivo = false;
