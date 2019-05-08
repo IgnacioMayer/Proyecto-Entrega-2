@@ -26,7 +26,9 @@ namespace ConsoleApp14
             this.Bitmons = new List<Bitmon>();
             this.Espacios_1 = new List<int[]>();
             this.Espacios_2 = new List<int[]>();
-        }
+            this.bitmons_creado_mes = new List<Bitmon>();
+            this.bitmons_muertos_mes = new List<Bitmon>();
+    }
 
         public void Actualizar_espacios()
         {
@@ -85,7 +87,7 @@ namespace ConsoleApp14
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
             List<int[]> espacios_disponibles = new List<int[]>();
-            bitmons_creado_mes = new List<Bitmon>();
+            bitmons_creado_mes.Clear();
             float probabilidad;
             try
             {
@@ -221,7 +223,7 @@ namespace ConsoleApp14
 
         public void Relaciones()
         {
-            bitmons_muertos_mes = new List<Bitmon>();
+            bitmons_muertos_mes.Clear();
             foreach (var pos in Espacios_2)
             {
                 //Apareamiento

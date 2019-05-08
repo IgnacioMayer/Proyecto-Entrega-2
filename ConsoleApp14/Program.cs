@@ -252,7 +252,7 @@ namespace ConsoleApp14
             mapa1.Ancho = 10;
             mapa1.Terrenos = opcion1;
             mapa1.Bitmons = bitmons1;
-            
+
             /*
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
@@ -353,8 +353,15 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
             */
+            List<string> tipo_bitmons = new List<string>();
+            tipo_bitmons.Add("Taplan");
+            tipo_bitmons.Add("Doti");
+            tipo_bitmons.Add("Wetar");
+            tipo_bitmons.Add("Dorvalo");
+            tipo_bitmons.Add("Gofue");
+            tipo_bitmons.Add("Ent");
             float numero_muertos = 0;
-            float numero_creados = 0;
+            float[] numero_creados = { 0, 0, 0, 0, 0, 0};
 
             int[] posENT = {0, 0};
             Ent papa = new Ent(posENT);
@@ -371,6 +378,15 @@ namespace ConsoleApp14
                     break;
                 }
                 */
+                if (mes%3 == 0)
+                {
+                    mapa1.CrearBitmon(papa, mama);
+                }
+                foreach (var bitmon in mapa1.Bitmons)
+                {
+                    bitmon.Mover(mapa1);
+                }
+                mapa1.Relaciones();
                 for (int i = 0; i < mapa1.Bitmons.Count; i++)
                 {
                     mapa1.Bitmons[i].Envejecer();
@@ -380,22 +396,6 @@ namespace ConsoleApp14
                         mapa1.Bitmons_muertos.Add(mapa1.Bitmons[i]);
                         mapa1.bitmons_muertos_mes.Add(mapa1.Bitmons[i]);
                     }
-                }
-                if (mes%3 == 0)
-                {
-                    mapa1.CrearBitmon(papa, mama);
-                }
-                foreach (var bitmon in mapa1.Bitmons)
-                {
-                    bitmon.Mover(mapa1);
-                }
-                try
-                {
-                    mapa1.Relaciones();
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("2");
                 }
                 Console.Write("\n   ");
                 for (int i = 0; i < mapa1.Ancho; i++)
@@ -498,23 +498,42 @@ namespace ConsoleApp14
                    
                 }
                 Console.WriteLine("");
-                foreach (var bitmon in mapa1.Bitmons_creados)
+                foreach (var bitmon in mapa1.bitmons_creado_mes)
                 {
-                    Console.WriteLine("se creo un {0}", bitmon.Tipo);
+                    Console.WriteLine("se creo un {0} en la posicion [{1},{2}]", bitmon.Tipo, bitmon.Posicion[0], bitmon.Posicion[1]);
                 }
                 Console.WriteLine("");
-                foreach (var bitmon in mapa1.Bitmons_muertos)
+                foreach (var bitmon in mapa1.bitmons_muertos_mes)
                 {
                     Console.WriteLine("se murio un {0} en la posicion [{1},{2}]", bitmon.Tipo, bitmon.Posicion[0], bitmon.Posicion[1]);
                 }
-                mes += 1;
                 if (mapa1.sobrepoblacion)
                 {
-                    Console.WriteLine("sobrepoblacion");
+                    Console.WriteLine("\nsobrepoblacion en el mes {0}, se detuvo las simulacion", mes);
                 }
-                numero_muertos += mapa1.bitmons_muertos_mes.Count*1000/mapa1.Bitmons.Count;
-                numero_creados += mapa1.bitmons_creado_mes.Count*1000/mapa1.Bitmons.Count;
+                numero_muertos += mapa1.bitmons_muertos_mes.Count * 1000 / mapa1.Bitmons.Count;
+                int count = 0;
+                foreach (var tipo in tipo_bitmons)
+                {
+                    var bitmons = mapa1.Bitmons.Where(x => x.Tipo == tipo).ToList();
+                    var bitmons_nuevo = mapa1.bitmons_creado_mes.Where(x => x.Tipo == tipo).ToList();
+                    try
+                    {
+                        numero_creados[count] += (float)bitmons_nuevo.Count * 1000 / bitmons.Count;
+                    }
+                    catch (Exception)
+                    {
+                        numero_creados[count] += 0;
+                    }
+                    count++;
+                }
+                mes++;
             }
+            foreach (var bit in mapa1.Bitmons_creados)
+            {
+                Console.WriteLine(bit.Tipo);
+            }
+            Console.WriteLine();
             float promedio_vida = 0;
             foreach (var bitmon in mapa1.Bitmons_muertos)
             {
@@ -526,13 +545,7 @@ namespace ConsoleApp14
             }
             promedio_vida = promedio_vida*10 / (mapa1.Bitmons_muertos.Count + mapa1.Bitmons.Count);
             Console.WriteLine("\nEl promedio de vida de los bitmons fue de {0} meses.\n",(float)((int)promedio_vida)/10);
-            List<string> tipo_bitmons = new List<string>();
-            tipo_bitmons.Add("Taplan");
-            tipo_bitmons.Add("Doti");
-            tipo_bitmons.Add("Wetar");
-            tipo_bitmons.Add("Dorvalo");
-            tipo_bitmons.Add("Gofue");
-            tipo_bitmons.Add("Ent");
+
             foreach (var tipo in tipo_bitmons)
             {
                 promedio_vida = 0;
@@ -549,6 +562,23 @@ namespace ConsoleApp14
                 promedio_vida = promedio_vida * 10 / (bitmons.Count + bitmons_m.Count);
                 Console.WriteLine("El promedio de vida de los {0} fue de {1} meses",tipo, (float)((int)promedio_vida) / 10);
             }
+            Console.WriteLine("");
+            numero_muertos = numero_muertos / mes;
+            for (int i = 0; i < 6; i++)
+            {
+                numero_creados[i] = numero_creados[i] *10 / mes;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                Console.WriteLine(numero_creados[i]);
+            }
+            int k = 0;
+            foreach (var tipo1 in tipo_bitmons)
+            {
+                Console.WriteLine("La tasa bruta de natalidad de los {0} fue de {1} º/ºº", tipo1, (float)((int)numero_creados[k]) / 10);
+                k++;
+            }
+            Console.WriteLine("La tasa bruta de mortalidad de los Bitmons fue de {0} º/ºº", numero_muertos);
         }
     }
 }
