@@ -363,16 +363,21 @@ namespace ConsoleApp14
                 {
                     break;
                 }
-                foreach (var bitmon in mapa1.Bitmons)
+
+                    foreach (var bitmon in mapa1.Bitmons)
+                    {
+                        bitmon.Mover(mapa1);
+                    }
+                
+                try
                 {
-                    bitmon.Mover(mapa1);
+                    mapa1.Relaciones();
+
                 }
-                //mapa1.CrearBitmon(Gofue1, Doti1);
-                mapa1.Relaciones();
-                //Bitmon bi = Dorvalo1;
-                //Console.Write("\nantes: [{0},{1}]", bi.Posicion[0], bi.Posicion[1]);
-                //bi.Mover(mapa1);
-                //Console.Write(", despues: [{0},{1}]\n\n   ", bi.Posicion[0], bi.Posicion[1]);
+                catch (Exception)
+                {
+                    Console.WriteLine("2");
+                }
                 Console.Write("\n\n   ");
                 for (int i = 0; i < mapa1.Ancho; i++)
                 {
