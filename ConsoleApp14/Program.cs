@@ -25,6 +25,22 @@ namespace ConsoleApp14
                 Console.WriteLine("Elija una opción correcta");
                 tipo_mapa = Console.ReadLine();
             }
+            Console.WriteLine("Elija una cantidad de mese para la simulación");
+            string mese = Console.ReadLine();
+            while (true)
+            {
+                try
+                {
+                    cantidad_mese = int.Parse(mese);
+                    break;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Elija una opción correcta");
+                    mese = Console.ReadLine();
+                }
+            }
+
 
             Console.WriteLine();
             // Creamos la matriz de terrenos predefinida
