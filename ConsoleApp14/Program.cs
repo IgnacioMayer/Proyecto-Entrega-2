@@ -357,22 +357,21 @@ namespace ConsoleApp14
             int mes = 0;
             while (mes < 30 && !mapa1.sobrepoblacion)
             {
+                /*
                 Console.WriteLine("\n                                              Mes: {0}",mes+1);
                 string input = Console.ReadLine();
                 if (input == "1")
                 {
                     break;
                 }
-
-                    foreach (var bitmon in mapa1.Bitmons)
-                    {
-                        bitmon.Mover(mapa1);
-                    }
-                
+                */
+                foreach (var bitmon in mapa1.Bitmons)
+                {
+                    bitmon.Mover(mapa1);
+                }
                 try
                 {
                     mapa1.Relaciones();
-
                 }
                 catch (Exception)
                 {
@@ -461,7 +460,6 @@ namespace ConsoleApp14
 
                     }
                     Console.Write("|\n");
-
                 }
                 Console.Write("   ");
                 for (int i = 0; i < mapa1.Ancho; i++)
