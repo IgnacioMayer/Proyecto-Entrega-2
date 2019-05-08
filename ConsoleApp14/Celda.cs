@@ -35,7 +35,6 @@ namespace ConsoleApp14
                 var empList = bitmons.Where(emp => emp.vivo==true).ToList();
                 if (empList.Count == 1)
                 {
-                    bitmons[0].Show();
                 }
                 else if (empList.Count == 2)
                 {

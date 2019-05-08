@@ -17,49 +17,16 @@ namespace ConsoleApp14
             Terreno Nieve = new Terreno("NieveIce");
             Terreno Volcán = new Terreno("Volcanic");
 
-           
-            Console.WriteLine("-=Bienvenido a Bitmonlandia=-");
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(" ");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("Acuático");
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine(" ");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("Desierto");
-            Console.BackgroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine(" ");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("Nieve");
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.WriteLine(" ");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("Volcán");
-            Console.BackgroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(" ");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("Bitmons\nTaplan");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("-");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Wetar");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("-");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Gofue");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("-");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Dorvalo");
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("-");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Ent");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("-");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Seleccione configuración inicial");
-            
+            int cantidad_mese = 30;
+            Console.WriteLine("Elija una configuracion de Mapa:\n[1] Mapa 1\n[2] Mapa 2\n[3] Mapa 3");
+            string tipo_mapa = Console.ReadLine();
+            while (tipo_mapa != "1" | tipo_mapa != "2" | tipo_mapa != "3")
+            {
+                Console.WriteLine("Elija una opción correcta");
+                tipo_mapa = Console.ReadLine();
+            }
+
+            Console.WriteLine();
             // Creamos la matriz de terrenos predefinida
             Terreno[,] opcion1 = new Terreno[10, 10];
             opcion1[0, 0] = Desierto;
@@ -348,11 +315,8 @@ namespace ConsoleApp14
             opcion3[5, 3] = Desierto;
             opcion3[5, 4] = Desierto;
             opcion3[5, 5] = Desierto;
-           
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey();
             */
+
             List<string> tipo_bitmons = new List<string>();
             tipo_bitmons.Add("Taplan");
             tipo_bitmons.Add("Doti");
@@ -367,10 +331,9 @@ namespace ConsoleApp14
             Ent papa = new Ent(posENT);
             Ent mama = new Ent(posENT);
             int mes = 1;
-            while (mes <= 30 && !mapa1.sobrepoblacion)
+            while (mes <= cantidad_mese && !mapa1.sobrepoblacion)
             {
-
-                Console.WriteLine("\n\n                                              Mes: {0}",mes);
+                Console.WriteLine("\n\n--------------------------------------------- Mes: {0} ---------------------------------------------", mes);
                 /*
                 string input = Console.ReadLine();
                 if (input == "1")
@@ -529,7 +492,7 @@ namespace ConsoleApp14
                 }
                 mes++;
             }
-   
+            Console.WriteLine("\n\n--------------------------------------------- Resultado de simulación ---------------------------------------------\n\n");
             Console.WriteLine();
             float promedio_vida = 0;
             foreach (var bitmon in mapa1.Bitmons_muertos)
@@ -569,7 +532,7 @@ namespace ConsoleApp14
             int k = 0;
             foreach (var tipo1 in tipo_bitmons)
             {
-                Console.WriteLine("La tasa bruta de natalidad de los {0} fue de {1} º/ºº", tipo1, Math.Round(numero_creados[k],2));
+                Console.WriteLine("La tasa bruta de natalidad de los {0} fue de {1} º/ºº", tipo1, Math.Round(numero_creados[k],1));
                 k++;
             }
             Console.WriteLine("La tasa bruta de mortalidad de los Bitmons fue de {0} º/ºº", numero_muertos);
@@ -577,7 +540,7 @@ namespace ConsoleApp14
             foreach (var tipo in tipo_bitmons)
             {
                 var bitmons = mapa1.Bitmons_creados.Where(x => x.Tipo == tipo).ToList();
-                Console.WriteLine("La cantidad de hijos en promedio de los {0} fue de {1} hijos por mes", tipo, Math.Round((float)bitmons.Count/mes,2));
+                Console.WriteLine("La cantidad de hijos en promedio de los {0} fue de {1} hijos por mes", tipo, Math.Round((float)bitmons.Count/mes,1));
             }
             Console.WriteLine("");
             foreach (var tipo in tipo_bitmons)
@@ -588,11 +551,11 @@ namespace ConsoleApp14
                     Console.WriteLine("La especie {0} se extinguio", tipo);
                 }
             }
-            Console.WriteLine(mapa1.Bitmons_muertos.Count);
+            Console.WriteLine("");
             foreach (var tipo in tipo_bitmons)
             {
                 var bitmons = mapa1.Bitmons_muertos.Where(x => x.Tipo == tipo).ToList();
-                Console.WriteLine("Hay {0} {1} en el Bithalla",bitmons.Count ,tipo);
+                Console.WriteLine("Hay {0} {1} en el Bithalla. Corresponden al {2} % ",bitmons.Count ,tipo, Math.Round((float)(bitmons.Count*100) / mapa1.Bitmons_muertos.Count,1));
             }
         }
     }

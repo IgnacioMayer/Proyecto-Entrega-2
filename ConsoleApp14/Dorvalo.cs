@@ -51,10 +51,5 @@ namespace ConsoleApp14
                 mapa.Actualizar_espacios();
             }
         }
-        public override void Show()
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("-");
-        }
     }
 }
