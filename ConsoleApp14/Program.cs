@@ -576,8 +576,8 @@ namespace ConsoleApp14
                 else
                 {
                     Console.WriteLine("No hay ningun bitmon muerto.");
+                    break;
                 }
-
             }
         }
     }
