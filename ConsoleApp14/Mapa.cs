@@ -26,6 +26,7 @@ namespace ConsoleApp14
             this.Espacios_1 = new List<int[]>();
             this.Espacios_2 = new List<int[]>();
         }
+
         public void Actualizar_espacios()
         {
             List<int[]> Espacios_v = new List<int[]>();
@@ -78,16 +79,11 @@ namespace ConsoleApp14
             Espacios_vacios = Espacios_v;
             Espacios_1 = Espacios1;
             Espacios_2 = Espacios2;
-
         }
+
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
             List<int[]> espacios_disponibles = new List<int[]>();
-            espacios_disponibles = Espacios_vacios;
-            foreach (var espacio in Espacios_1)
-            {
-                espacios_disponibles.Add(espacio);
-            }
             float probabilidad;
             try
             {
@@ -108,57 +104,113 @@ namespace ConsoleApp14
             {
                 padre_ganador = mama.Tipo;
             }
-            if (espacios_disponibles.Count > 0)
+            Bitmon bitmon;
+            if (padre_ganador == "Wetar")
             {
-                numeroRan = random.Next(0, espacios_disponibles.Count);
-                Bitmon bitmon;
-
-                if (padre_ganador == "Dorvalo")
+                for (int i = 0; i < Alto; i++)
                 {
-                    bitmon = new Dorvalo(Espacios_vacios[numeroRan]);
-                    Bitmons.Add(bitmon);
-                    Bitmons_creados.Add(bitmon);
+                    for (int j = 0; j < Ancho; j++)
+                    {
+                        int[] pos = { i, j };
+                        string tipo = Terrenos[i, j].tipo;
+                        if (tipo == "Acuatico")
+                        {
+                            bool hay_dos = false;
+                            foreach (var espacio in Espacios_2)
+                            {
+                                if (espacio[0] == pos[0] && espacio[1] == pos[1])
+                                {
+                                    hay_dos = true;
+                                }
+                            }
+                            if (!hay_dos)
+                            {
+                                espacios_disponibles.Add(pos);
+                            }
+                        }
+                    }
                 }
-                else if (padre_ganador == "Doti")
+                if (espacios_disponibles.Count > 0)
                 {
-                    bitmon = new Doti(Espacios_vacios[numeroRan]);
-                    Bitmons_creados.Add(bitmon);
-                    Bitmons.Add(bitmon);
-                }
-                else if (padre_ganador == "Ent")
-                {
-                    bitmon = new Ent(Espacios_vacios[numeroRan]);
-                    Bitmons_creados.Add(bitmon);
-                    Bitmons.Add(bitmon);
-                }
-                else if (padre_ganador == "Gofue")
-                {
-                    bitmon = new Gofue(Espacios_vacios[numeroRan]);
-                    Bitmons_creados.Add(bitmon);
-                    Bitmons.Add(bitmon);
-                }
-                else if (padre_ganador == "Taplan")
-                {
-                    bitmon = new Taplan(Espacios_vacios[numeroRan]);
+                    numeroRan = random.Next(0, espacios_disponibles.Count);
+                    bitmon = new Wetar(espacios_disponibles[numeroRan]);
                     Bitmons_creados.Add(bitmon);
                     Bitmons.Add(bitmon);
                 }
-
-                else if (padre_ganador == "Wetar")
+                else
                 {
-                    bitmon = new Wetar(Espacios_vacios[numeroRan]);
-                    Bitmons_creados.Add(bitmon);
-                    Bitmons.Add(bitmon);
+                    sobrepoblacion = true;
                 }
-                papa.CantidadDereproducciones++;
-                mama.CantidadDereproducciones++;
-                this.Actualizar_espacios();
             }
             else
             {
-                sobrepoblacion = true;
+                for (int i = 0; i < Alto; i++)
+                {
+                    for (int j = 0; j < Ancho; j++)
+                    {
+                        int[] pos = { i, j };
+                        string tipo = Terrenos[i, j].tipo;
+                        if (tipo != "Acuatico")
+                        {
+                            bool hay_dos = false;
+                            foreach (var espacio in Espacios_2)
+                            {
+                                if (espacio[0] == pos[0] && espacio[1] == pos[1])
+                                {
+                                    hay_dos = true;
+                                }
+                            }
+                            if (!hay_dos)
+                            {
+                                espacios_disponibles.Add(pos);
+                            }
+                        }
+                    }
+                }
+                if (espacios_disponibles.Count > 0)
+                {
+                    numeroRan = random.Next(0, espacios_disponibles.Count);
+                    if (padre_ganador == "Dorvalo")
+                    {
+                        bitmon = new Dorvalo(espacios_disponibles[numeroRan]);
+                        Bitmons.Add(bitmon);
+                        Bitmons_creados.Add(bitmon);
+                    }
+                    else if (padre_ganador == "Doti")
+                    {
+                        bitmon = new Doti(espacios_disponibles[numeroRan]);
+                        Bitmons_creados.Add(bitmon);
+                        Bitmons.Add(bitmon);
+                    }
+                    else if (padre_ganador == "Ent")
+                    {
+                        bitmon = new Ent(espacios_disponibles[numeroRan]);
+                        Bitmons_creados.Add(bitmon);
+                        Bitmons.Add(bitmon);
+                    }
+                    else if (padre_ganador == "Gofue")
+                    {
+                        bitmon = new Gofue(espacios_disponibles[numeroRan]);
+                        Bitmons_creados.Add(bitmon);
+                        Bitmons.Add(bitmon);
+                    }
+                    else if (padre_ganador == "Taplan")
+                    {
+                        bitmon = new Taplan(espacios_disponibles[numeroRan]);
+                        Bitmons_creados.Add(bitmon);
+                        Bitmons.Add(bitmon);
+                    }
+                }
+                else
+                {
+                    sobrepoblacion = true;
+                }
             }
+            papa.CantidadDereproducciones++;
+            mama.CantidadDereproducciones++;
+            this.Actualizar_espacios();
         }
+
         public void Relaciones()
         {
             foreach (var pos in Espacios_2)
@@ -203,6 +255,7 @@ namespace ConsoleApp14
                 }
             }
         }
+
         public void Show()
         {
             // Creo una Matriz con las celdas que contengan un terreno y un numero n de bitmons que se encuentren en una posicion

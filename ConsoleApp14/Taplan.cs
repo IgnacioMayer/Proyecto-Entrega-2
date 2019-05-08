@@ -11,7 +11,7 @@ namespace ConsoleApp14
             int vida = random.Next(11, 16);
             this.Tipo = "Taplan";
             this.Posicion = posicion;
-            this.TiempoVida = 0;
+            this.TiempoVida = vida;
             this.Multiplicador = 1.0f;
             this.PuntosdeAtaque = 13;
             this.PuntosdeVida = 32;

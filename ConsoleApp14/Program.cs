@@ -353,12 +353,14 @@ namespace ConsoleApp14
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
             */
-
-            int mes = 0;
-            while (mes < 30 && !mapa1.sobrepoblacion)
+            int[] posENT = {0, 0};
+            Ent papa = new Ent(posENT);
+            Ent mama = new Ent(posENT);
+            int mes = 1;
+            while (mes <= 30 && !mapa1.sobrepoblacion)
             {
 
-                Console.WriteLine("\n                                              Mes: {0}",mes+1);
+                Console.WriteLine("\n                                              Mes: {0}",mes);
                 /*
                 string input = Console.ReadLine();
                 if (input == "1")
@@ -366,6 +368,19 @@ namespace ConsoleApp14
                     break;
                 }
                 */
+                for (int i = 0; i < mapa1.Bitmons.Count; i++)
+                {
+                    mapa1.Bitmons[i].Envejecer();
+                    if (!mapa1.Bitmons[i].vivo)
+                    {
+                        mapa1.Bitmons.Remove(mapa1.Bitmons[i]);
+                        mapa1.Bitmons_muertos.Add(mapa1.Bitmons[i]);
+                    }
+                }
+                if (mes%3 == 0)
+                {
+                    mapa1.CrearBitmon(papa, mama);
+                }
                 foreach (var bitmon in mapa1.Bitmons)
                 {
                     bitmon.Mover(mapa1);
@@ -378,7 +393,7 @@ namespace ConsoleApp14
                 {
                     Console.WriteLine("2");
                 }
-                Console.Write("\n\n   ");
+                Console.Write("\n   ");
                 for (int i = 0; i < mapa1.Ancho; i++)
                 {
                     Console.Write(" {0}  ", i);
@@ -475,21 +490,17 @@ namespace ConsoleApp14
                 Console.WriteLine("\n");
                 for (int i = 0; i < mapa1.Bitmons.Count; i++)
                 {
-                    Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3} ", mapa1.Bitmons[i].Tipo, mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1], mapa1.Bitmons[i].PuntosdeVida);
-                    mapa1.Bitmons[i].Envejecer();
-                    if (!mapa1.Bitmons[i].vivo)
-                    {
-                        mapa1.Bitmons.Remove(mapa1.Bitmons[i]);
-                        mapa1.Bitmons_muertos.Add(mapa1.Bitmons[i]);
-                    }
+                    Console.WriteLine("{0}, [{1},{2}], puntos de Vida: {3}", mapa1.Bitmons[i].Tipo, mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1], mapa1.Bitmons[i].PuntosdeVida);
                 }
+                Console.WriteLine("");
                 foreach (var bitmon in mapa1.Bitmons_creados)
                 {
-                    Console.WriteLine("se creo {0} -> [{1},{2}]", bitmon.Tipo, bitmon.Posicion[0], bitmon.Posicion[1]);
+                    Console.WriteLine("se creo un {0}", bitmon.Tipo);
                 }
+                Console.WriteLine("");
                 foreach (var bitmon in mapa1.Bitmons_muertos)
                 {
-                    Console.WriteLine("se murio {0} -> [{1},{2}]", bitmon.Tipo, bitmon.Posicion[0], bitmon.Posicion[1]);
+                    Console.WriteLine("se murio un {0} en la posicion [{1},{2}]", bitmon.Tipo, bitmon.Posicion[0], bitmon.Posicion[1]);
                 }
                 mes += 1;
                 if (mapa1.sobrepoblacion)
@@ -507,7 +518,7 @@ namespace ConsoleApp14
                 promedio_vida += bitmon.TiempoVivido;
             }
             promedio_vida = promedio_vida*10 / (mapa1.Bitmons_muertos.Count + mapa1.Bitmons.Count);
-            Console.WriteLine("\nEl promedio de vida de los bitmons fue de {0} meses.",(float)((int)promedio_vida)/10);
+            Console.WriteLine("\nEl promedio de vida de los bitmons fue de {0} meses.\n",(float)((int)promedio_vida)/10);
             List<string> tipo_bitmons = new List<string>();
             tipo_bitmons.Add("Taplan");
             tipo_bitmons.Add("Doti");
@@ -529,7 +540,7 @@ namespace ConsoleApp14
                     promedio_vida += bit.TiempoVivido;
                 }
                 promedio_vida = promedio_vida * 10 / (bitmons.Count + bitmons_m.Count);
-                Console.WriteLine("\nEl promedio de vida de los {0} fue de {1} meses",tipo, (float)((int)promedio_vida) / 10);
+                Console.WriteLine("El promedio de vida de los {0} fue de {1} meses",tipo, (float)((int)promedio_vida) / 10);
             }
         }
     }
