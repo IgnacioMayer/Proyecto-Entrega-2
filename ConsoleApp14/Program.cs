@@ -13,7 +13,7 @@ namespace ConsoleApp14
         {
             while (true)
             {
-                Console.WriteLine("Bienvenido a Bitmolandia\n[1] Entrar en la simulacion.\n[2] Salir del programa.");
+                Console.WriteLine("             --== Bienvenido a Bitmonlandia ==--\n[1] Entrar en la simulacion.\n[2] Salir del programa.");
                 string input1 = Console.ReadLine();
                 while (input1 != "1" && input1 != "2")
                 {
