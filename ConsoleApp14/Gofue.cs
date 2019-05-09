@@ -46,6 +46,7 @@ namespace ConsoleApp14
                                     {
                                         lista.Add(pos);
                                         lista.Add(pos);
+                                        lista.Add(pos);
                                     }
                                     else
                                     {

@@ -75,7 +75,7 @@ namespace ConsoleApp14
                 "    __  __  __  __  __              __  __  __  __  __ \n");
 
 
-            Console.Write("\nconfiguracion de Mapa:");
+            Console.Write("\nconfiguracion de Mapa: ");
             string tipo_mapa = Console.ReadLine();
             while (tipo_mapa != "1" && tipo_mapa != "2" && tipo_mapa != "3")
             {
